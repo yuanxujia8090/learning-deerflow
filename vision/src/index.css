@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  background: #0a0a0a;
+  color: #e0e0e0;
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #ffffff15; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #ffffff25; }
+
+/* React Flow 默认样式覆盖 */
+.react-flow__background { background: #0a0a0a !important; }
+.react-flow__controls-button {
+  background: #161b22 !important;
+  border-color: #ffffff15 !important;
+  color: #ffffff80 !important;
+  fill: #ffffff80 !important;
+}
+.react-flow__controls-button:hover {
+  background: #1c2333 !important;
+}
+.react-flow__minimap {
+  background: #161b22 !important;
+  border: 1px solid #ffffff15 !important;
+  border-radius: 8px !important;
+}
+.react-flow__attribution { display: none !important; }
