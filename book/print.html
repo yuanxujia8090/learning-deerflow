@@ -1,0 +1,2609 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN" class="ayu sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>DeerFlow 学习指南</title>
+        <meta name="robots" content="noindex">
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="从零掌握 DeerFlow 超级代理框架——面向前端开发者的系统化学习文档">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-0392ca55.css">
+        <link rel="stylesheet" href="css/chrome-fc474251.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "ayu";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex-40246476.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc-b47ce2b5.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('ayu')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">DeerFlow 学习指南</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/bytedance/deer-flow" title="Git repository" aria-label="Git repository">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="前言"><a class="header" href="#前言">前言</a></h1>
+<h2 id="关于-deerflow"><a class="header" href="#关于-deerflow">关于 DeerFlow</a></h2>
+<p>DeerFlow（Deep Exploration and Efficient Research Flow）是字节跳动开源的一款<strong>超级代理运行时</strong>（Super Agent Harness）。它不是传统意义上的 Web 框架或库，而是一个能让 AI 代理真正“干活“的基础设施——提供文件系统、持久记忆、沙箱执行、技能扩展、子代理委派等能力。</p>
+<h3 id="本项目面向谁"><a class="header" href="#本项目面向谁">本项目面向谁？</a></h3>
+<p>如果你：</p>
+<ul>
+<li>有<strong>前端开发经验</strong>，想进入 AI Agent 领域</li>
+<li>需要在 DeerFlow 基础上做<strong>二次开发与封装</strong></li>
+<li>想理解 AI 代理的<strong>完整数据流和核心架构</strong></li>
+<li>有<strong>企业级部署</strong>需求</li>
+</ul>
+<p>那么这份指南就是为你准备的。</p>
+<h3 id="学习目标"><a class="header" href="#学习目标">学习目标</a></h3>
+<ol>
+<li><strong>熟悉掌握 DeerFlow</strong>，具备二次开发和封装能力</li>
+<li><strong>理解完整数据流程、核心模块、能力边界</strong></li>
+<li><strong>掌握企业级部署与维护</strong>相关知识</li>
+</ol>
+<h3 id="阅读建议"><a class="header" href="#阅读建议">阅读建议</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>阶段</th><th>内容</th><th>适合人群</th></tr>
+</thead>
+<tbody>
+<tr><td>第一阶段</td><td>前言 + 快速启动 + 架构全景</td><td>所有读者</td></tr>
+<tr><td>第二阶段</td><td>核心模块详解（按兴趣选读）</td><td>想深入理解</td></tr>
+<tr><td>第三阶段</td><td>数据流程 + 能力边界</td><td>准备二次开发</td></tr>
+<tr><td>第四阶段</td><td>二次开发 + 企业级部署</td><td>计划上线</td></tr>
+</tbody>
+</table>
+</div>
+<h3 id="知识预备"><a class="header" href="#知识预备">知识预备</a></h3>
+<p>你不需要 Python 或后端经验，但以下前端知识会让你更容易上手：</p>
+<ul>
+<li><strong>React 组件化思维</strong> → 理解中间件管道</li>
+<li><strong>前端状态管理</strong>（Redux/Zustand） → 理解 ThreadState</li>
+<li><strong>REST API / GraphQL</strong> 使用经验 → 理解 Gateway API</li>
+<li><strong>Docker 基础</strong> → 理解部署</li>
+</ul>
+<h3 id="项目核心数字"><a class="header" href="#项目核心数字">项目核心数字</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>指标</th><th>数值</th></tr>
+</thead>
+<tbody>
+<tr><td>后端语言</td><td>Python 3.12+</td></tr>
+<tr><td>后端框架</td><td>FastAPI + LangGraph</td></tr>
+<tr><td>前端语言</td><td>Next.js 16 + React 19 + TypeScript</td></tr>
+<tr><td>包管理</td><td>uv（后端） / pnpm（前端）</td></tr>
+<tr><td>测试数</td><td>~277 个后端测试</td></tr>
+<tr><td>内置技能</td><td>21 个</td></tr>
+<tr><td>支持的 IM 渠道</td><td>7 个</td></tr>
+<tr><td>中间件数量</td><td>14 个</td></tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h2 id="复习习题"><a class="header" href="#复习习题">复习习题</a></h2>
+<ol>
+<li>
+<p>（初级）DeerFlow 的全称是什么？它由哪个公司开源？</p>
+</li>
+<li>
+<p>（中级）本书将前端的状态管理库（Redux/Zustand）类比为 DeerFlow 的哪个概念？这对理解 Agent 系统有什么帮助？</p>
+</li>
+<li>
+<p>（中级）DeerFlow 有四个核心理念：Skill、Sub-Agent、Sandbox 和 Memory，试用自己的话解释每个概念的作用。</p>
+</li>
+<li>
+<p>（高级）参考材料提到 DeerFlow 采用“Harness“定位，这意味着它更适合作为基础设施层。你能举出一个具体的二次开发场景，说明这种设计带来的优势？</p>
+</li>
+<li>
+<p>（中级）DeerFlow 2.0 引入了 Progressive Skill Loading（渐进式技能加载），为什么需要在 Agent 运行时中实现按需加载而非一次性全部加载？</p>
+</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="系统架构总览"><a class="header" href="#系统架构总览">系统架构总览</a></h1>
+<h2 id="顶层架构"><a class="header" href="#顶层架构">顶层架构</a></h2>
+<pre><code>浏览器 → Nginx (:2026) → 前端 (:3000) + 网关 API (:8001)
+                                       ↓
+                               LangGraph 代理运行时
+                              （主导代理 + 子代理 + 工具 + 沙箱）
+</code></pre>
+<h3 id="三个关键组件"><a class="header" href="#三个关键组件">三个关键组件</a></h3>
+<p><strong>Nginx 统一入口（端口 2026）</strong></p>
+<ul>
+<li>反向代理，统一入口</li>
+<li><code>/api/langgraph/*</code> → 网关的 LangGraph 兼容运行时</li>
+<li><code>/api/*</code> → 网关 REST API</li>
+<li><code>/*</code> → 前端静态资源</li>
+</ul>
+<p><strong>Gateway API（端口 8001）</strong></p>
+<ul>
+<li>FastAPI 应用 “DeerFlow API Gateway”</li>
+<li>包含 LangGraph 兼容的 runs/threads API</li>
+<li>SSE 流式推送</li>
+<li>模型、MCP、技能、上传、文件等管理端点</li>
+<li>内嵌 Agent 运行时</li>
+</ul>
+<p><strong>前端（端口 3000）</strong></p>
+<ul>
+<li>Next.js 16 应用</li>
+<li>React 19 + TypeScript</li>
+<li>Chat 界面</li>
+<li>模型/技能/记忆管理</li>
+</ul>
+<h3 id="中间件管道"><a class="header" href="#中间件管道">中间件管道</a></h3>
+<pre><code>                            Middleware Chain
+  ┌──────────────────────────────────────────────────────────────────┐
+  │ 1. ThreadDataMiddleware     - 初始化工作区/上传/输出目录          │
+  │ 2. UploadsMiddleware        - 处理上传文件                       │
+  │ 3. SandboxMiddleware        - 获取沙箱环境                       │
+  │ 4. SummarizationMiddleware  - 上下文缩减（按配置）                │
+  │ 5. TitleMiddleware          - 自动生成对话标题                    │
+  │ 6. TodoListMiddleware       - 任务跟踪（计划模式）                │
+  │ 7. ViewImageMiddleware      - 视觉模型支持                       │
+  │ 8. ClarificationMiddleware  - 处理澄清请求                       │
+  └──────────────────────────────────────────────────────────────────┘
+                                        ↓
+                              Agent Core（模型 + 工具 + 系统提示词）
+</code></pre>
+<h3 id="harness--app-分离"><a class="header" href="#harness--app-分离">Harness / App 分离</a></h3>
+<pre><code>backend/
+├── packages/harness/deerflow/   ← Harness（可复用框架，纯 agent 逻辑）
+│   ├── agents/                  ← 主导代理、中间件、记忆
+│   ├── sandbox/                 ← 沙箱执行 + 文件工具
+│   ├── subagents/               ← 子代理委派
+│   ├── mcp/                     ← MCP 集成
+│   ├── skills/                  ← 技能发现
+│   ├── models/                  ← 模型工厂
+│   ├── config/                  ← 配置系统
+│   ├── tools/                   ← 内置工具
+│   └── community/               ← 社区工具（Tavily、Jina 等）
+│
+└── app/                         ← 应用层（依赖 harness）
+    ├── gateway/                 ← FastAPI 网关
+    │   ├── app.py               ← 应用入口
+    │   └── routers/             ← 路由模块（17个）
+    └── channels/                ← IM 渠道集成
+</code></pre>
+<p><strong>严格规则</strong>：App 可以引用 Harness。Harness <strong>不能</strong> 引用 App。由测试 <code>tests/test_harness_boundary.py</code> 强制执行。</p>
+<hr>
+<h2 id="复习习题-1"><a class="header" href="#复习习题-1">复习习题</a></h2>
+<ol>
+<li>
+<p>（初级）DeerFlow 的 Nginx 配置中，<code>/api/langgraph/*</code> 和 <code>/api/*</code> 分别路由到哪些后端服务？端口分别是多少？</p>
+</li>
+<li>
+<p>（中级）参考材料中提到了“三层架构“（Gateway → Agent Core → Infrastructure），而当前文档描述的是“三个关键组件“。请从职责分离的角度，分析 Gateway 和 LangGraph Server 的边界在哪里。</p>
+</li>
+<li>
+<p>（中级）Harness/App 分离的规则是“App 可以引用 Harness, Harness 不能引用 App“。这条规则的目的是什么？如果违反会带来什么后果？</p>
+</li>
+<li>
+<p>（高级）参考材料将中间件分为“运行时基础“和“Lead Agent 专属“两类（共18个），而当前文档列出8个。对比两者差异后，你认为哪些中间件的缺失对生产环境影响最大？为什么？</p>
+</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="前端开发者的概念对照"><a class="header" href="#前端开发者的概念对照">前端开发者的概念对照</a></h1>
+<p>本章用你熟悉的前端概念来映射 DeerFlow 的后端设计。</p>
+<h2 id="核心概念对照表"><a class="header" href="#核心概念对照表">核心概念对照表</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>前端概念</th><th>DeerFlow 对应</th><th>类比说明</th></tr>
+</thead>
+<tbody>
+<tr><td>React 组件树</td><td>中间件管道（Middleware Chain）</td><td>组件层层包装，中间件也层层处理请求</td></tr>
+<tr><td>Redux Store / Zustand</td><td>ThreadState</td><td>统一状态管理，reducer 更新规则</td></tr>
+<tr><td>Redux 中间件（thunk/saga）</td><td>Agent 中间件</td><td>拦截 dispatch → 处理 → 放行</td></tr>
+<tr><td>Express/Koa 中间件</td><td>中间件管道</td><td>洋葱模型，<code>before_agent</code> / <code>after_agent</code></td></tr>
+<tr><td>React Context</td><td>Sub-Agent 隔离上下文</td><td>每个子代理有自己的 Provider</td></tr>
+<tr><td>Docker Compose</td><td>Sandbox 沙箱</td><td>隔离执行环境</td></tr>
+<tr><td>Vite 插件</td><td>MCP 服务</td><td>可插拔扩展能力</td></tr>
+<tr><td>localStorage</td><td>长时记忆</td><td>持久化跨会话数据</td></tr>
+<tr><td>TypeScript 类型</td><td>Pydantic 模型</td><td>运行时类型校验</td></tr>
+<tr><td>Webpack Loader</td><td>技能系统（Skills）</td><td>按需加载，链式处理</td></tr>
+<tr><td>Next.js API Routes</td><td>Gateway API 路由</td><td>服务端 API 定义</td></tr>
+<tr><td>Nginx 反向代理</td><td>Nginx（同一个）</td><td>路由转发与负载均衡</td></tr>
+<tr><td>CI/CD Pipeline</td><td>LangGraph 代理流程</td><td>有向图编排</td></tr>
+<tr><td>Hooks（useEffect）</td><td>中间件 after_agent</td><td>副作用处理</td></tr>
+<tr><td>Error Boundary</td><td>ToolErrorHandlingMiddleware</td><td>错误捕获与兜底</td></tr>
+<tr><td>微前端 Module Federation</td><td>MCP + ACP Agents</td><td>跨进程扩展</td></tr>
+<tr><td>React.lazy + Suspense</td><td>技能延迟加载</td><td>按需加载资源</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="架构思维差异"><a class="header" href="#架构思维差异">架构思维差异</a></h2>
+<h3 id="1-同步-vs-异步"><a class="header" href="#1-同步-vs-异步">1. 同步 vs 异步</a></h3>
+<p>前端多是同步调用（虽有 Promise/async）：</p>
+<pre><code class="language-javascript">// 前端思维：调用 → 等待返回
+const data = await api.getModels()
+</code></pre>
+<p>DeerFlow 是<strong>事件驱动流式</strong>：</p>
+<pre><code class="language-python"># 后端思维：流式事件
+for event in agent.astream({"messages": [...]}):
+    if event.type == "messages-tuple":
+        print(event.data["content"])
+</code></pre>
+<h3 id="2-组件树-vs-中间件管道"><a class="header" href="#2-组件树-vs-中间件管道">2. 组件树 vs 中间件管道</a></h3>
+<p>React 组件的 <code>props</code> 向下传递，DeerFlow 中间件则：</p>
+<pre><code class="language-python">class SomeMiddleware(BaseMiddleware):
+    def before_agent(self, state: ThreadState) -&gt; ThreadState:
+        # 请求进入前，类似 React 父组件 render
+        state = self.do_something(state)
+        return state
+
+    def after_agent(self, state: ThreadState) -&gt; ThreadState:
+        # 代理响应后清理，类似 useEffect 的 cleanup
+        return state
+</code></pre>
+<h3 id="3-状态管理对比"><a class="header" href="#3-状态管理对比">3. 状态管理对比</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>前端（Redux）</th><th>DeerFlow（ThreadState）</th></tr>
+</thead>
+<tbody>
+<tr><td>createStore</td><td>make_lead_agent</td></tr>
+<tr><td>reducer</td><td>Reducer 函数（merge_artifacts）</td></tr>
+<tr><td>action</td><td>LLM 工具调用</td></tr>
+<tr><td>middleware</td><td>agent 中间件</td></tr>
+<tr><td>useSelector</td><td>状态快照</td></tr>
+<tr><td>dispatch</td><td>工具调用结果</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="关键类型对照"><a class="header" href="#关键类型对照">关键类型对照</a></h2>
+<h3 id="python--typescript"><a class="header" href="#python--typescript">Python ↔ TypeScript</a></h3>
+<pre><code class="language-python"># Python Pydantic
+class ThreadState(AgentState):
+    messages: list[BaseMessage]
+    sandbox: dict | None
+    artifacts: list[str]
+    title: str | None
+</code></pre>
+<pre><code class="language-typescript">// TypeScript 等价
+interface ThreadState {
+  messages: BaseMessage[]
+  sandbox?: Record&lt;string, unknown&gt;
+  artifacts: string[]
+  title?: string
+}
+</code></pre>
+<h2 id="总结"><a class="header" href="#总结">总结</a></h2>
+<p>作为前端开发者，你不需要精通 Python 就能理解 DeerFlow。关键在于把后端概念<strong>映射</strong>到你熟悉的模型上。后续章节会沿用对照表中的类比帮助你理解。</p>
+<hr>
+<h2 id="复习习题-2"><a class="header" href="#复习习题-2">复习习题</a></h2>
+<ol>
+<li>
+<p>（初级）React 的 <code>Error Boundary</code> 对应 DeerFlow 的哪个中间件？它们的作用有什么共同点？</p>
+</li>
+<li>
+<p>（中级）<code>localStorage</code> 类比“长时记忆“的局限是什么？DeerFlow 的真实记忆系统在持久化方式上做了哪些增强？</p>
+</li>
+<li>
+<p>（中级）参考材料中引入了「渐进式技能加载」概念，它与 <code>React.lazy + Suspense</code> 的类比有多精确？两者在“按需“和“预加载“策略上有何区别？</p>
+</li>
+<li>
+<p>（高级）如果你要用一张图向另一个前端开发者解释 ThreadState 与 Redux Store 的相似性和差异性，你会突出哪三个要点？</p>
+</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="配置体系"><a class="header" href="#配置体系">配置体系</a></h1>
+<h2 id="概述"><a class="header" href="#概述">概述</a></h2>
+<p>DeerFlow 的配置体系由两个核心文件构成：<code>config.yaml</code>（主配置）和 <code>extensions_config.json</code>（扩展配置）。配置系统支持环境变量注入、热重载、版本验证。</p>
+<h2 id="配置架构"><a class="header" href="#配置架构">配置架构</a></h2>
+<pre><code class="language-yaml"># config.yaml — 项目根目录
+config.yaml:
+  models: [...]        # 模型定义
+  sandbox: {...}       # 沙箱配置
+  tools: [...]         # 工具注册
+  tool_groups: [...]
+  skills: {...}        # 技能路径
+  memory: {...}        # 记忆存储
+  subagents: {...}     # 子代理
+  summarization: {...} # 摘要配置
+  title: {...}         # 标题生成
+  token_usage: {...}   # Token 使用跟踪
+  loop_detection: {...} # 循环检测
+  guardrails: {...}    # 安全护栏
+  database: {...}      # 数据库
+  checkpointer: {...}  # 检查点
+  agents_api: {...}    # Agent API
+  acp_agents: {...}    # ACP 代理
+  channels: {...}      # IM 渠道
+
+# extensions_config.json — 独立文件
+extensions_config.json:
+  mcpServers: {...}     # MCP 服务定义
+  skills: {...}         # 技能启用状态
+  mcpInterceptors: [...] # MCP 拦截器
+</code></pre>
+<h2 id="配置加载流程"><a class="header" href="#配置加载流程">配置加载流程</a></h2>
+<pre><code>config.yaml  →  AppConfig.from_file()
+                      ↓
+               Pydantic 解析（类似 zod schema 校验）
+                      ↓
+               环境变量替换 ($VAR → 实际值)
+                      ↓
+               版本检查（兼容旧配置）
+                      ↓
+               get_app_config() 全局单例
+                      ↓
+               文件 mtime 变化时自动重载
+</code></pre>
+<p>这就像前端的 <code>zod</code> 对配置进行校验，然后通过 Context Provider 全局共享。</p>
+<h2 id="热重载机制"><a class="header" href="#热重载机制">热重载机制</a></h2>
+<pre><code class="language-python"># 根据文件 mtime 自动判断是否重载
+def get_app_config() -&gt; AppConfig:
+    current_mtime = os.path.getmtime(config_path)
+    if current_mtime != _cached_mtime:
+        _reload_config()
+    return _cached_config
+</code></pre>
+<p><strong>热重载生效范围：</strong></p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>配置项</th><th>是否需要重启</th></tr>
+</thead>
+<tbody>
+<tr><td>模型列表/参数</td><td>不需要（下次请求生效）</td></tr>
+<tr><td>工具配置</td><td>不需要</td></tr>
+<tr><td>技能配置</td><td>不需要</td></tr>
+<tr><td>记忆配置</td><td>不需要</td></tr>
+<tr><td>数据库连接</td><td><strong>需要重启</strong></td></tr>
+<tr><td>沙箱提供商</td><td><strong>需要重启</strong></td></tr>
+<tr><td>IM 渠道</td><td><strong>需要重启</strong></td></tr>
+<tr><td>日志级别</td><td><strong>需要重启</strong></td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="核心子配置模块"><a class="header" href="#核心子配置模块">核心子配置模块</a></h2>
+<p>每个核心功能都有自己的配置模块，放在 <code>backend/packages/harness/deerflow/config/</code> 下。</p>
+<h3 id="modelconfig--模型配置"><a class="header" href="#modelconfig--模型配置">ModelConfig — 模型配置</a></h3>
+<pre><code class="language-yaml">models:
+  - name: gpt-4o
+    display_name: GPT-4o
+    use: langchain_openai:ChatOpenAI    # 类路径（反射加载）
+    model: gpt-4o
+    api_key: $OPENAI_API_KEY            # 环境变量引用
+    supports_thinking: true             # 思考能力
+    supports_vision: true               # 视觉能力
+    when_thinking_enabled:
+      extra_body:
+        # 思考模式下的额外参数
+</code></pre>
+<p><code>use</code> 字段使用 <code>包名:类名</code> 格式，通过反射动态加载类——这就是“可插拔“架构的底层机制，可以自由替换为自定义实现。</p>
+<h3 id="sandboxconfig--沙箱配置"><a class="header" href="#sandboxconfig--沙箱配置">SandboxConfig — 沙箱配置</a></h3>
+<pre><code class="language-yaml">sandbox:
+  use: deerflow.sandbox.local.local_sandbox_provider:LocalSandboxProvider
+  # 或
+  use: deerflow.community.aio_sandbox:AioSandboxProvider
+  provisioner_url: http://provisioner:8002  # K8s 模式
+</code></pre>
+<h3 id="skillsconfig--技能配置"><a class="header" href="#skillsconfig--技能配置">SkillsConfig — 技能配置</a></h3>
+<pre><code class="language-yaml">skills:
+  use: deerflow.skills.storage.local_skill_storage:LocalSkillStorage
+  container_path: /mnt/skills    # 容器内路径
+  host_path: ./skills            # 宿主机路径
+</code></pre>
+<h2 id="前端配置"><a class="header" href="#前端配置">前端配置</a></h2>
+<p>前端配置在 <code>frontend/.env</code>：</p>
+<pre><code class="language-bash">BETTER_AUTH_SECRET=local-dev-secret   # 认证密钥（构建必需）
+NEXT_PUBLIC_API_URL=xxx               # API 地址
+</code></pre>
+<h2 id="配置最佳实践"><a class="header" href="#配置最佳实践">配置最佳实践</a></h2>
+<ol>
+<li><strong>敏感信息放 <code>.env</code></strong>，<code>config.yaml</code> 中用 <code>$VAR</code> 引用</li>
+<li><strong>不要手动编辑 <code>extensions_config.json</code></strong> — 通过 Gateway API 管理</li>
+<li><strong>升级时用 <code>make config-upgrade</code></strong> 而非 <code>make config</code></li>
+<li><strong>修改基础设施配置后重启</strong>（数据库、沙箱、渠道）</li>
+</ol>
+<hr>
+<h2 id="复习习题-3"><a class="header" href="#复习习题-3">复习习题</a></h2>
+<ol>
+<li>
+<p>（初级）DeerFlow 在什么地方引用环境变量？例如，API Key 的 $OPENAI_API_KEY 是如何被解析的？</p>
+</li>
+<li>
+<p>（中级）参考材料列出了 <code>config.yaml</code> 中 20+ 个配置节。对比当前文档列出的配置节，你发现哪些缺失了？选择 3 个你认为必须了解的补充说明其用途。</p>
+</li>
+<li>
+<p>（中级）哪些配置变更需要重启服务？哪些可以热重载？设计这种区分背后的考量是什么？</p>
+</li>
+<li>
+<p>（高级）<code>extensions_config.json</code> 的 <code>auto_load</code> 选项在开发环境和生产环境中的最佳实践有何不同？为什么参考文档建议稳定后关闭 auto_load？</p>
+</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="主导代理lead-agent"><a class="header" href="#主导代理lead-agent">主导代理（Lead Agent）</a></h1>
+<h2 id="前端视角理解"><a class="header" href="#前端视角理解">前端视角理解</a></h2>
+<p>如果把 DeerFlow 比作一个 React 应用：</p>
+<ul>
+<li><strong>Agent</strong> = 根组件（App）</li>
+<li><strong>中间件</strong> = HOC 或 Context Provider</li>
+<li><strong>ThreadState</strong> = Redux Store</li>
+<li><strong>Tool 调用</strong> = API 请求</li>
+<li><strong>LLM</strong> = 智能状态更新函数</li>
+</ul>
+<h2 id="核心职责"><a class="header" href="#核心职责">核心职责</a></h2>
+<p>主导代理是整个系统的<strong>大脑</strong>。它的职责包括：</p>
+<ol>
+<li><strong>解析用户输入</strong> — 理解任务</li>
+<li><strong>调用中间件</strong> — 按序执行横切关注点</li>
+<li><strong>选择工具</strong> — 决定执行什么操作</li>
+<li><strong>委派子代理</strong> — 复杂任务拆解</li>
+<li><strong>生成响应</strong> — 输出最终结果</li>
+</ol>
+<h2 id="创建流程"><a class="header" href="#创建流程">创建流程</a></h2>
+<pre><code>make_lead_agent(config)
+        ↓
+_resolve_runtime_config()    ← 解析请求上下文
+        ↓
+_resolve_model_name()        ← 选择模型（请求参数 &gt; Agent 配置 &gt; 全局默认）
+        ↓
+_build_middlewares()         ← 组装中间件管道
+        ↓
+创建 LangGraph StateGraph    ← 构建执行图
+        ↓
+绑定工具、系统提示词          ← 注入能力
+</code></pre>
+<h2 id="中间件管道14-个中间件"><a class="header" href="#中间件管道14-个中间件">中间件管道（14 个中间件）</a></h2>
+<p>中间件的执行顺序<strong>至关重要</strong>，按优先级排序：</p>
+<pre><code class="language-python">优先级  中间件                    职责
+──────────────────────────────────────────────────────
+  1    ToolErrorHandlingMiddleware    捕获工具调用异常
+  2    DynamicContextMiddleware       注入日期/用户提醒
+  3    SummarizationMiddleware        上下文截断（条件性）
+  4    TodoMiddleware                 计划模式任务列表（条件性）
+  5    TokenUsageMiddleware           Token 使用追踪（条件性）
+  6    TitleMiddleware                从对话生成标题
+  7    MemoryMiddleware               将对话排入记忆更新队列
+  8    ViewImageMiddleware            视觉模型支持（条件性）
+  9    DeferredToolFilterMiddleware   隐藏延迟加载的工具（条件性）
+  10   SubagentLimitMiddleware        限制子代理并发（条件性）
+  11   LoopDetectionMiddleware        检测重复工具调用（条件性）
+  12   自定义中间件                    用户注入
+  13   SafetyFinishReasonMiddleware   安全终止处理（条件性）
+  14   ClarificationMiddleware        处理澄清请求（必须最后）
+</code></pre>
+<p><strong>中间件结构（类似 Express/Koa）：</strong></p>
+<pre><code class="language-python">class SomeMiddleware(BaseMiddleware):
+    def before_agent(self, state: ThreadState) -&gt; ThreadState:
+        # 请求处理前 —— 类似 useEffect 或请求拦截器
+        # 可以修改 state
+        return state
+
+    def after_agent(self, state: ThreadState) -&gt; ThreadState:
+        # 响应处理后 —— 类似响应拦截器
+        # 可以清理资源、更新存储
+        return state
+</code></pre>
+<h2 id="threadstate--统一状态管理"><a class="header" href="#threadstate--统一状态管理">ThreadState — 统一状态管理</a></h2>
+<p>类似 Redux Store，是所有数据的中心：</p>
+<pre><code class="language-python">class ThreadState(AgentState):
+    messages: list[BaseMessage]        # 对话消息（类比 Redux action 历史）
+    sandbox: dict                      # 沙箱环境信息
+    artifacts: list[str]               # 生成的文件路径列表
+    thread_data: dict                  # 工作区/上传/输出路径
+    title: str | None                  # 自动生成的对话标题
+    todos: list[dict]                  # 任务列表（计划模式）
+    uploaded_files: list[dict]         # 上传的文件元数据
+    viewed_images: dict                # 视觉模型图像数据
+</code></pre>
+<p><strong>Reducer 机制（类比 Redux reducer）：</strong></p>
+<ul>
+<li><code>merge_artifacts</code> — 合并并去重文件路径</li>
+<li><code>merge_viewed_images</code> — 合并图片字典</li>
+<li><code>merge_todos</code> — 最后非空值胜出</li>
+</ul>
+<h2 id="关键源码路径"><a class="header" href="#关键源码路径">关键源码路径</a></h2>
+<pre><code class="language-python">backend/packages/harness/deerflow/agents/
+├── lead_agent/
+│   ├── agent.py              ← 主工厂函数 make_lead_agent
+│   ├── system_prompt.py      ← 系统提示词构建
+│   └── agent_config.py       ← Agent 配置
+├── middlewares/               ← 中间件实现
+│   ├── thread_data.py
+│   ├── uploads.py
+│   ├── sandbox.py
+│   ├── summarization.py
+│   ├── title.py
+│   ├── todo.py
+│   ├── view_image.py
+│   ├── clarification.py
+│   ├── memory_middleware.py
+│   ├── tool_error_handling.py
+│   ├── token_usage.py
+│   ├── dynamic_context.py
+│   ├── deferred_tool_filter.py
+│   ├── subagent_limit.py
+│   ├── loop_detection.py
+│   └── safety_finish_reason.py
+├── memory/                    ← 记忆系统
+└── thread_state.py           ← ThreadState 定义
+</code></pre>
+<h2 id="如何添加自定义中间件"><a class="header" href="#如何添加自定义中间件">如何添加自定义中间件</a></h2>
+<p>在 <code>config.yaml</code> 中添加：</p>
+<pre><code class="language-yaml">middlewares:
+  - use: my_module:MyMiddleware
+    priority: 12   # 插入到指定位置
+</code></pre>
+<hr>
+<h2 id="复习习题-4"><a class="header" href="#复习习题-4">复习习题</a></h2>
+<p><strong>1. （初级）</strong> <code>make_lead_agent</code> 工厂函数的核心职责是什么？它接受什么参数，返回什么？</p>
+<p><strong>2. （中级）</strong> <code>ThreadState</code> 继承了 LangGraph 的 <code>AgentState</code>，扩展了哪些字段？其中 <code>merge_artifacts</code> 这个 reducer 的作用是什么？</p>
+<p><strong>3. （中级）</strong> 参考材料中提到中间件完整的顺序是 18 个，而文档列出 14 个。<code>SandboxAuditMiddleware</code>、<code>LLMErrorHandlingMiddleware</code>、<code>LoopDetectionMiddleware</code> 分别解决什么问题？</p>
+<p><strong>4. （高级）</strong> 执行 <code>agent.astream(state, config, stream_mode="values")</code> 时，事件类型 <code>values</code> 和 <code>messages-tuple</code> 有什么区别？各自在前端如何使用？</p>
+<p><strong>5. （高级）</strong> 参考材料中 <code>DeferredToolFilterMiddleware</code> 的功能是什么？为什么需要将一部分工具对 LLM“隐藏“但又保留在 <code>ToolNode</code> 中？</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="子代理系统sub-agents"><a class="header" href="#子代理系统sub-agents">子代理系统（Sub-Agents）</a></h1>
+<h2 id="前端视角理解-1"><a class="header" href="#前端视角理解-1">前端视角理解</a></h2>
+<p>类比微前端架构中的子应用加载：</p>
+<ul>
+<li><strong>主导代理</strong> = 主应用容器</li>
+<li><strong>子代理</strong> = 独立加载的子应用（微前端概念）</li>
+<li><strong>task 工具</strong> = 路由分发</li>
+<li><strong>子代理结果</strong> = 子应用返回值</li>
+</ul>
+<p>或者类比为 <strong>Map/Reduce</strong>：</p>
+<ul>
+<li>Map 阶段：主导代理将任务拆解，派发给多个子代理并行执行</li>
+<li>Reduce 阶段：主导代理收集子代理结果，综合产出</li>
+</ul>
+<h2 id="为什么需要子代理"><a class="header" href="#为什么需要子代理">为什么需要子代理？</a></h2>
+<p>复杂任务往往无法在一个上下文中完成。比如：</p>
+<pre><code>"帮我研究 AI Agent 领域的最新论文"
+          ↓
+主导代理分解任务：
+  ├── 子代理A：arXiv 论文检索
+  ├── 子代理B：Twitter/X 趋势分析  ← 并行执行
+  └── 子代理C：GitHub 热门项目
+          ↓
+主导代理综合三份报告 → 输出完整分析
+</code></pre>
+<h2 id="子代理配置"><a class="header" href="#子代理配置">子代理配置</a></h2>
+<pre><code class="language-python">class SubagentConfig:
+    name: str                     # 唯一标识符
+    description: str              # 用途说明（LLM 选择依据）
+    system_prompt: str | None     # 自定义提示词
+    tools: list[str] | None       # 允许的工具（None=全部）
+    disallowed_tools: list[str]   # 禁用的工具（默认排除 ["task"]）
+    skills: list[str] | None      # 技能加载（None=继承全部，[]=无）
+    model: str                    # 模型（"inherit"或显式名称）
+    max_turns: int                # 最大轮次（默认 50）
+    timeout_seconds: int          # 超时（默认 900）
+</code></pre>
+<h2 id="执行引擎--subagentexecutor"><a class="header" href="#执行引擎--subagentexecutor">执行引擎 — SubagentExecutor</a></h2>
+<pre><code>execute(task, result_holder)
+        ↓
+_load_skills()                ← 加载子代理特定技能
+        ↓
+_load_skill_messages()        ← 技能注入为 SystemMessage
+        ↓
+_build_initial_state()        ← 构建初始状态（过滤工具）
+        ↓
+agent.astream()               ← 异步流式执行
+        ↓
+结果收集 → SubagentResult
+
+支持：
+- 同步执行（检测事件循环，自动切换）
+- 异步后台执行（线程池）
+- 取消（CancelEvent）
+- Token 使用追踪
+</code></pre>
+<h2 id="subagentresult"><a class="header" href="#subagentresult">SubagentResult</a></h2>
+<pre><code class="language-python">class SubagentResult:
+    task_id: str                # 任务 ID
+    trace_id: str               # 追踪 ID
+    status: SubagentStatus      # 状态（running/success/failed/timed_out/cancelled）
+    result: str | None          # 最终文本
+    error: str | None           # 失败原因
+    ai_messages: list[dict]     # AI 消息收集
+    token_usage_records: list   # Token 使用记录
+    cancel_event: Event         # 取消信号
+</code></pre>
+<h2 id="内置子代理"><a class="header" href="#内置子代理">内置子代理</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>名称</th><th>用途</th><th>特点</th></tr>
+</thead>
+<tbody>
+<tr><td>general-purpose</td><td>通用任务</td><td>大部分工具可用，排除 task</td></tr>
+<tr><td>basher</td><td>Bash 执行</td><td>需要沙箱 bash 支持</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="子代理生命周期"><a class="header" href="#子代理生命周期">子代理生命周期</a></h2>
+<ol>
+<li><strong>创建</strong> — <code>SubagentExecutor</code> 初始化运行环境</li>
+<li><strong>执行</strong> — 在独立上下文中运行，隔离主导代理的上下文</li>
+<li><strong>结果收集</strong> — 实时收集 <code>ai_messages</code></li>
+<li><strong>超时/取消</strong> — 安全终止</li>
+<li><strong>资源回收</strong> — 清理临时数据</li>
+</ol>
+<h2 id="关键源码路径-1"><a class="header" href="#关键源码路径-1">关键源码路径</a></h2>
+<pre><code class="language-python">backend/packages/harness/deerflow/subagents/
+├── config.py           # SubagentConfig 定义
+├── executor.py         # SubagentExecutor 执行引擎
+├── registry.py         # 代理注册表
+└── builtins/           # 内置子代理定义
+</code></pre>
+<hr>
+<h2 id="复习习题-5"><a class="header" href="#复习习题-5">复习习题</a></h2>
+<p><strong>1. （初级）</strong> <code>SubagentConfig</code> 中的 <code>tools</code> 和 <code>disallowed_tools</code> 字段分别代表什么？它们的优先级关系是怎样的？</p>
+<p><strong>2. （中级）</strong> 参考材料中提到 Sub-Agent 的取消是“协作式“的，这是什么意思？在什么边界条件下检查取消信号？</p>
+<p><strong>3. （中级）</strong> <code>SubagentExecutor</code> 使用双线程池架构（<code>scheduler_pool</code> + <code>execution_pool</code>）的目的是什么？为什么不使用单线程池？</p>
+<p><strong>4. （高级）</strong> 生产环境中为什么推荐设置 <code>disallowed_tools=["task"]</code>？如果不设置会导致什么风险？</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="沙箱与文件系统"><a class="header" href="#沙箱与文件系统">沙箱与文件系统</a></h1>
+<h2 id="前端视角理解-2"><a class="header" href="#前端视角理解-2">前端视角理解</a></h2>
+<p>想象一个<strong>浏览器的 iframe + File System Access API</strong>：</p>
+<ul>
+<li><strong>沙箱</strong> = 隔离的 iframe（同源策略）</li>
+<li><strong>文件系统</strong> = Origin Private File System（每个线程对应独立目录）</li>
+<li><strong>bash 执行</strong> = 危险的 eval（默认关闭）</li>
+<li><strong>Docker 沙箱</strong> = 更严格的跨域隔离（cross-origin isolation）</li>
+</ul>
+<h2 id="什么是沙箱"><a class="header" href="#什么是沙箱">什么是沙箱？</a></h2>
+<p>沙箱是 DeerFlow 给代理的“计算机“——一个隔离的执行环境，包含：</p>
+<ul>
+<li><strong>文件系统</strong> — 读写文件</li>
+<li><strong>Bash</strong> — 执行命令（可选）</li>
+<li><strong>网络</strong> — 访问外部服务</li>
+<li><strong>环境变量</strong> — 配置注入</li>
+</ul>
+<pre><code>每个线程的沙箱目录结构：
+/mnt/user-data/
+├── uploads/          ← 用户上传的文件（类似 multer 上传目录）
+├── workspace/        ← 代理工作区（类似项目的 src/）
+└── outputs/          ← 最终产出物（类似 dist/）
+</code></pre>
+<h2 id="沙箱模式"><a class="header" href="#沙箱模式">沙箱模式</a></h2>
+<p>DeerFlow 支持三种沙箱模式：</p>
+<h3 id="模式-1本地执行localsandboxprovider"><a class="header" href="#模式-1本地执行localsandboxprovider">模式 1：本地执行（LocalSandboxProvider）</a></h3>
+<pre><code>特点：直接在主机的文件系统上运行
+优点：零配置，开发方便
+缺点：无隔离，bash 默认禁用
+适用：开发调试
+</code></pre>
+<p><strong>配置：</strong></p>
+<pre><code class="language-yaml">sandbox:
+  use: deerflow.sandbox.local.local_sandbox_provider:LocalSandboxProvider
+</code></pre>
+<p><strong>安全提醒</strong>：主机 bash 默认禁用。因为 Node 环境无法提供安全的执行隔离——这就像让你在浏览器里 <code>eval</code> 用户代码一样危险。</p>
+<h3 id="模式-2docker-执行aiosandboxprovider---localbackend"><a class="header" href="#模式-2docker-执行aiosandboxprovider---localbackend">模式 2：Docker 执行（AioSandboxProvider - LocalBackend）</a></h3>
+<pre><code>特点：每个线程在独立 Docker 容器中运行
+优点：完全隔离，支持 bash
+缺点：需要 Docker 守护进程
+适用：本地生产、开发测试
+</code></pre>
+<p><strong>配置：</strong></p>
+<pre><code class="language-yaml">sandbox:
+  use: deerflow.community.aio_sandbox:AioSandboxProvider
+</code></pre>
+<h3 id="模式-3kubernetes-执行aiosandboxprovider---remotebackend--provisioner"><a class="header" href="#模式-3kubernetes-执行aiosandboxprovider---remotebackend--provisioner">模式 3：Kubernetes 执行（AioSandboxProvider - RemoteBackend + Provisioner）</a></h3>
+<pre><code>特点：在 K8s Pod 中运行
+优点：水平扩展，生产级隔离
+缺点：需要 K8s 集群
+适用：企业生产环境
+</code></pre>
+<p><strong>配置：</strong></p>
+<pre><code class="language-yaml">sandbox:
+  use: deerflow.community.aio_sandbox:AioSandboxProvider
+  provisioner_url: http://provisioner:8002
+</code></pre>
+<h2 id="sandbox-抽象接口"><a class="header" href="#sandbox-抽象接口">Sandbox 抽象接口</a></h2>
+<pre><code class="language-python">class Sandbox(ABC):
+    def execute_command(self, command: str) -&gt; str           # 执行命令
+    def read_file(self, path: str) -&gt; str                    # 读取文件
+    def write_file(self, path: str, content: str, append=False)  # 写文件
+    def download_file(self, path: str) -&gt; bytes              # 下载（含路径遍历检测）
+    def list_dir(self, path: str, max_depth=2)               # 列出目录
+    def glob(self, pattern: str) -&gt; tuple                    # 文件匹配搜索
+    def grep(self, pattern: str) -&gt; tuple                    # 文件内容搜索
+    def update_file(self, path: str, content: bytes)         # 更新文件
+
+class SandboxProvider(ABC):
+    def acquire(self, thread_id) -&gt; str      # 获取沙箱
+    def get(self, sandbox_id) -&gt; Sandbox     # 获取沙箱实例
+    def release(self, sandbox_id)            # 释放沙箱
+    def reset(self)                          # 重置
+    def shutdown(self)                       # 关闭
+</code></pre>
+<h2 id="sandbox-工具"><a class="header" href="#sandbox-工具">Sandbox 工具</a></h2>
+<p>DeerFlow 提供基于沙箱的工具：</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>工具</th><th>说明</th><th>前端类比</th></tr>
+</thead>
+<tbody>
+<tr><td>bash</td><td>执行 shell 命令</td><td>eval（危险）</td></tr>
+<tr><td>read</td><td>读取文件</td><td>fs.readFile</td></tr>
+<tr><td>write</td><td>写入文件</td><td>fs.writeFile</td></tr>
+<tr><td>str_replace</td><td>替换文件内容</td><td>sed</td></tr>
+<tr><td>ls</td><td>列出目录</td><td>fs.readdir</td></tr>
+<tr><td>glob</td><td>模式搜索文件</td><td>fast-glob</td></tr>
+<tr><td>grep</td><td>搜索文件内容</td><td>ripgrep</td></tr>
+<tr><td>view_image</td><td>查看图片</td><td>img 标签</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="工具使用与安全"><a class="header" href="#工具使用与安全">工具使用与安全</a></h2>
+<p><strong>安全策略</strong>（类似 Content-Security-Policy）：</p>
+<pre><code>LocalSandboxProvider： 默认禁用 bash
+Docker Sandbox：       bash 可用
+文件路径遍历：         read_file/write_file 需在白名单路径内
+下载文件：             路径遍历检测 → PermissionError
+</code></pre>
+<h2 id="关键源码路径-2"><a class="header" href="#关键源码路径-2">关键源码路径</a></h2>
+<pre><code class="language-python">backend/packages/harness/deerflow/sandbox/
+├── sandbox.py              # Sandbox 抽象接口
+├── sandbox_provider.py     # Provider 抽象工厂
+├── tools.py                # 沙箱工具（bash/read/write）
+├── middleware.py            # 沙箱生命周期中间件
+└── local/
+    ├── local_sandbox.py    # 本地沙箱实现
+    └── local_sandbox_provider.py  # 本地 Provider
+</code></pre>
+<hr>
+<h2 id="复习习题-6"><a class="header" href="#复习习题-6">复习习题</a></h2>
+<p><strong>1. （初级）</strong> DeerFlow 支持哪三种沙箱模式？它们分别在什么场景下使用？</p>
+<p><strong>2. （中级）</strong> <code>SandboxMiddleware</code> 的 <code>lazy_init</code> 参数控制什么行为？<code>lazy_init=True</code> 和 <code>False</code> 在性能上各有什么优劣？</p>
+<p><strong>3. （中级）</strong> 参考材料的 <code>SandboxAuditMiddleware</code> 将 bash 命令分成了哪三个风险等级？<code>block</code> 级别的命令会被怎么处理？</p>
+<p><strong>4. （高级）</strong> 虚拟路径系统（<code>/mnt/user-data/</code> → 实际物理路径）解决了什么问题？如果设计上不使用路径映射，会引入哪些安全问题？</p>
+<p><strong>5. （高级）</strong> Provisioner 模式下的沙箱和 <code>LocalSandbox</code> 在生命周期管理上有哪些关键区别？为什么 Provisioner 模式更适合生产环境？</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="技能系统skills"><a class="header" href="#技能系统skills">技能系统（Skills）</a></h1>
+<h2 id="前端视角理解-3"><a class="header" href="#前端视角理解-3">前端视角理解</a></h2>
+<p>类比 <strong>VSCode 插件 + 按需加载</strong>：</p>
+<ul>
+<li><strong>Skills</strong> = VSCode 扩展</li>
+<li><strong>SKILL.md</strong> = 扩展的 README + package.json</li>
+<li><strong>技能加载</strong> = 扩展激活（激活事件触发）</li>
+<li><strong>工具白名单</strong> = 扩展权限声明（permissions）</li>
+<li><strong>技能仓库</strong> = 扩展市场</li>
+</ul>
+<p>也可以类比 <strong>React.lazy + Suspense</strong>：</p>
+<ul>
+<li>技能只有在需要时才加载</li>
+<li>不增加不必要的上下文</li>
+<li>按需、渐进式</li>
+</ul>
+<h2 id="技能是什么"><a class="header" href="#技能是什么">技能是什么？</a></h2>
+<p>技能是一个 <strong>Markdown 文件</strong>（SKILL.md），包含 YAML 前置元数据加上 Workflow 指令：</p>
+<pre><code class="language-markdown">---
+name: deep-research
+description: 深度网络研究，从多个角度探索主题
+allowed-tools:
+  - tavily_search
+  - web_fetch
+  - web_search
+---
+
+# Deep Research Skill
+
+当你需要深入研究一个主题时：
+
+1. **规划**：列出子问题
+2. **搜索**：使用 web_search 收集资料
+3. **阅读**：对每个来源使用 web_fetch
+4. **综合**：整理发现
+5. **产出**：输出结构化报告
+</code></pre>
+<h2 id="技能系统架构"><a class="header" href="#技能系统架构">技能系统架构</a></h2>
+<pre><code>技能目录结构（类似 VSCode 的 ~/.vscode/extensions/）：
+skills/
+├── public/                             ← 官方内置技能（git 跟踪）
+│   ├── deep-research/SKILL.md
+│   ├── report-generation/SKILL.md
+│   ├── slide-creation/SKILL.md
+│   ├── web-page/SKILL.md
+│   ├── image-generation/SKILL.md
+│   ├── chart-visualization/SKILL.md
+│   ├── data-analysis/SKILL.md
+│   ├── ppt-generation/SKILL.md
+│   ├── podcast-generation/SKILL.md
+│   └── ... (共 21 个)
+└── custom/                             ← 自定义技能（git ignored）
+    └── your-custom-skill/SKILL.md
+</code></pre>
+<h2 id="技能加载流程"><a class="header" href="#技能加载流程">技能加载流程</a></h2>
+<pre><code>1. 用户发送请求
+        ↓
+2. SkillStorage.load_skills()
+   ├── 扫描技能目录 → 解析 SKILL.md 前置元数据
+   └── 检查 enabled 状态
+        ↓
+3. skill_manager_tool（条件性加载）
+   ├── 如果技能进化启用 → 可创建/修改技能
+   └── 否则 → 仅加载已启用的技能
+        ↓
+4. 注入系统提示词
+   └── 技能内容作为 SystemMessage 注入
+        ↓
+5. 工具过滤
+   └── filter_tools_by_skill_allowed_tools()
+       └── 仅允许技能白名单中的工具
+</code></pre>
+<h2 id="技能元数据"><a class="header" href="#技能元数据">技能元数据</a></h2>
+<pre><code class="language-python">class Skill:
+    name: str                     # 唯一名称
+    description: str              # 描述（LLM 理解用什么）
+    license: str | None           # 许可证
+    skill_dir: str                # 技能目录路径
+    skill_file: str               # SKILL.md 路径
+    relative_path: str            # 相对于技能根目录的路径
+    category: SkillCategory       # public 或 custom
+    allowed_tools: list[str] | None  # 工具白名单
+    enabled: bool                 # 是否启用
+</code></pre>
+<h2 id="技能与工具的关系"><a class="header" href="#技能与工具的关系">技能与工具的关系</a></h2>
+<pre><code>技能（Skill） — 定义做什么、怎么做
+   │
+   ├── 声明 allowed_tools（权限控制）
+   ├── 提供 Workflow 指导（LLM 提示）
+   └── 被推送给 LLM 作为上下文
+
+工具（Tool） — 定义能做什么
+   │
+   ├── 搜索（Tavily、Jina、Exa、Serper）
+   ├── 读取（web_fetch、read_file）
+   ├── 写（write_file、str_replace）
+   └── 执行（bash）
+</code></pre>
+<h2 id="内置技能清单21-个"><a class="header" href="#内置技能清单21-个">内置技能清单（21 个）</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>技能</th><th>用途</th><th>需要的工具</th></tr>
+</thead>
+<tbody>
+<tr><td>deep-research</td><td>深度网络研究</td><td>web_search, web_fetch</td></tr>
+<tr><td>report-generation</td><td>生成结构化报告</td><td>write_file, read</td></tr>
+<tr><td>slide-creation</td><td>创建演示文稿</td><td>write, image_gen</td></tr>
+<tr><td>web-page</td><td>生成网页</td><td>write_file, bash</td></tr>
+<tr><td>image-generation</td><td>AI 图像生成</td><td>image_gen</td></tr>
+<tr><td>chart-visualization</td><td>图表可视化</td><td>write_file, bash</td></tr>
+<tr><td>data-analysis</td><td>数据分析</td><td>bash, read, write</td></tr>
+<tr><td>ppt-generation</td><td>PPT 生成</td><td>write, bash</td></tr>
+<tr><td>podcast-generation</td><td>播客内容</td><td>write, bash</td></tr>
+<tr><td>video-generation</td><td>视频内容</td><td>write_file, bash</td></tr>
+<tr><td>newsletter-generation</td><td>通讯稿</td><td>write, web_search</td></tr>
+<tr><td>code-documentation</td><td>代码文档</td><td>read, write</td></tr>
+<tr><td>frontend-design</td><td>UI/UX 设计</td><td>write, view_image</td></tr>
+<tr><td>academic-paper-review</td><td>论文审阅</td><td>web_search, read</td></tr>
+<tr><td>consulting-analysis</td><td>咨询分析</td><td>web_search, write</td></tr>
+<tr><td>skill-creator</td><td>创建新技能</td><td>write, read</td></tr>
+<tr><td>surprise-me</td><td>随机互动</td><td>-</td></tr>
+<tr><td>vercel-deploy-claimable</td><td>Vercel 部署</td><td>bash, write</td></tr>
+<tr><td>web-design-guidelines</td><td>网页设计指南</td><td>read</td></tr>
+<tr><td>github-deep-research</td><td>GitHub 深度研究</td><td>web_search</td></tr>
+<tr><td>claude-to-deerflow</td><td>Claude 迁移</td><td>web_fetch</td></tr>
+<tr><td>systematic-literature-review</td><td>系统文献综述</td><td>web_search</td></tr>
+<tr><td>find-skills</td><td>发现技能</td><td>read</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="自定义技能开发"><a class="header" href="#自定义技能开发">自定义技能开发</a></h2>
+<p>创建 <code>skills/custom/your-skill/SKILL.md</code>：</p>
+<pre><code class="language-markdown">---
+name: my-custom-skill
+description: 我的自定义技能
+allowed-tools:
+  - web_search
+  - write_file
+---
+
+# My Custom Skill
+
+你希望代理执行的 Workflow 指令...
+</code></pre>
+<h2 id="关键源码路径-3"><a class="header" href="#关键源码路径-3">关键源码路径</a></h2>
+<pre><code class="language-python">backend/packages/harness/deerflow/skills/
+├── types.py              # Skill 类型定义
+├── parser.py             # SKILL.md 解析（YAML 前置元数据）
+├── loader.py             # 技能加载器
+├── storage/              # 技能存储
+│   ├── skill_storage.py    # 抽象接口
+│   └── local_skill_storage.py  # 本地文件系统实现
+├── installer.py          # .skill 归档安装
+├── validation.py         # 技能验证
+├── security_scanner.py   # 安全扫描
+└── tool_policy.py        # 工具白名单策略
+</code></pre>
+<hr>
+<h2 id="复习习题-7"><a class="header" href="#复习习题-7">复习习题</a></h2>
+<p><strong>1. （初级）</strong> Skill 和 Tool 有什么区别？请用一个具体的例子说明两者的关系。</p>
+<p><strong>2. （中级）</strong> 参考材料中将 Skill 安全扫描的结果分为 <code>allow</code> / <code>warn</code> / <code>block</code> 三个级别。请举例说明什么情况下会得到 <code>warn</code> 而非 <code>block</code>？</p>
+<p><strong>3. （中级）</strong> 渐进式技能加载（Progressive Skill Loading）解决了什么核心问题？它的基本原理是什么？</p>
+<p><strong>4. （高级）</strong> 参考材料中提到 Skill 安装器（Installer）包含 zip bomb 检测机制。为什么需要这种保护？恶意构造的 <code>.skill</code> 文件可能造成什么破坏？</p>
+<p><strong>5. （高级）</strong> SKILL.md 中的 <code>allowed-tools</code> 是一把“双刃剑“。请从安全隔离和灵活性两个角度分析白名单机制的利弊。</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="mcp-集成"><a class="header" href="#mcp-集成">MCP 集成</a></h1>
+<h2 id="前端视角理解-4"><a class="header" href="#前端视角理解-4">前端视角理解</a></h2>
+<p>MCP（Model Context Protocol）可以类比为：</p>
+<ul>
+<li><strong>WebSocket + REST 混合协议</strong>：持久连接（SSE）+ 请求-响应（HTTP）</li>
+<li><strong>Chrome 扩展的 Message Passing</strong>：不同进程间通信</li>
+<li><strong>微服务中的 Sidecar 模式</strong>：附加服务提供额外能力</li>
+<li><strong>npm 包</strong>：可安装、可配置的工具扩展</li>
+</ul>
+<p>简单说，MCP 就是给 LLM 装“插件“的标准方式。</p>
+<h2 id="mcp-架构"><a class="header" href="#mcp-架构">MCP 架构</a></h2>
+<pre><code>LLM (LangGraph Agent)
+      │
+      ▼
+MCP Client (DeerFlow 内嵌)
+      │
+      ├──→ MCP Server A（stdio 模式）    ← 本地进程
+      │     └── 持久会话池（per server × thread_id）
+      │
+      ├──→ MCP Server B（SSE/HTTP 模式） ← 远程服务
+      │     └── 支持 OAuth 认证
+      │
+      └──→ MCP Server C（SSE/HTTP 模式）
+            └── 自定义拦截器
+</code></pre>
+<h2 id="mcp-服务器类型"><a class="header" href="#mcp-服务器类型">MCP 服务器类型</a></h2>
+<h3 id="stdio-模式本地进程"><a class="header" href="#stdio-模式本地进程">Stdio 模式（本地进程）</a></h3>
+<pre><code class="language-json">{
+  "mcpServers": {
+    "my-tool": {
+      "transport": "stdio",
+      "command": "npx",
+      "args": ["-y", "my-mcp-server"],
+      "env": {
+        "API_KEY": "$MY_API_KEY"
+      }
+    }
+  }
+}
+</code></pre>
+<p>类比：在终端运行 <code>npx</code> 启动一个服务器，通过 stdin/stdout 通信。</p>
+<h3 id="ssehttp-模式远程服务"><a class="header" href="#ssehttp-模式远程服务">SSE/HTTP 模式（远程服务）</a></h3>
+<pre><code class="language-json">{
+  "mcpServers": {
+    "remote-api": {
+      "transport": "sse",
+      "url": "https://api.example.com/mcp"
+    }
+  }
+}
+</code></pre>
+<p>类比：调用 REST API，但通过 Server-Sent Events 保持长连接。</p>
+<h2 id="会话池管理"><a class="header" href="#会话池管理">会话池管理</a></h2>
+<pre><code class="language-python"># 核心：每个 (server_name, thread_id) 维护一个会话
+session_pool = MCPSessionPool(max_size=256)
+
+# LRU 淘汰策略
+# 跨事件循环检测：如果会话在错误的异步循环上 → 自动替换
+# 作用域关闭：close_scope(thread_id) → 释放该线程所有会话
+</code></pre>
+<p><strong>前端类比</strong>：类似 HTTP 连接池 + WebSocket 复用。减少频繁创建/销毁连接的开销。</p>
+<h2 id="mcp-工具加载流程"><a class="header" href="#mcp-工具加载流程">MCP 工具加载流程</a></h2>
+<pre><code>1. Gateway 启动
+        ↓
+2. 读取 extensions_config.json
+        ↓
+3. MultiServerMCPClient 发现工具
+        ↓
+4. Stdio 工具 → 包装为 Session Pool 工具（持久连接）
+   SSE/HTTP 工具 → 保持原样（特殊 TaskGroup 清理）
+        ↓
+5. 可选：OAuth 拦截器注入（token 自动刷新）
+        ↓
+6. 可选：自定义拦截器注入
+        ↓
+7. 工具缓存（initialize_mcp_tools → 按 mtime 检查过期）
+        ↓
+8. Agent 运行时按需加载
+</code></pre>
+<h2 id="配置完整示例"><a class="header" href="#配置完整示例">配置完整示例</a></h2>
+<pre><code class="language-yaml"># extensions_config.json
+{
+  "mcpServers": {
+    "playwright": {
+      "transport": "stdio",
+      "command": "npx",
+      "args": ["-y", "@anthropic/mcp-playwright"]
+    },
+    "github": {
+      "transport": "sse",
+      "url": "https://api.github.com/mcp"
+    }
+  },
+  "mcpInterceptors": [
+    {
+      "name": "my-interceptor",
+      "use": "my_module:MyInterceptor"
+    }
+  ]
+}
+</code></pre>
+<h2 id="关键源码路径-4"><a class="header" href="#关键源码路径-4">关键源码路径</a></h2>
+<pre><code class="language-python">backend/packages/harness/deerflow/mcp/
+├── client.py         # MCP 服务器参数构建
+├── tools.py          # MCP 工具加载（核心）
+├── session_pool.py   # 会话池管理（LRU）
+├── cache.py          # 工具缓存（mtime 检测）
+└── oauth.py          # OAuth 认证流
+</code></pre>
+<hr>
+<h2 id="复习习题-8"><a class="header" href="#复习习题-8">复习习题</a></h2>
+<p><strong>1. （初级）</strong> MCP 支持的三种传输方式是什么？它们分别适用于什么场景？</p>
+<p><strong>2. （中级）</strong> 参考材料中的 MCP 会话池管理采用了 LRU 淘汰策略，还包含“跨事件循环检测“。为什么会出现跨事件循环问题？检测到后会怎么处理？</p>
+<p><strong>3. （中级）</strong> MCP 工具名前缀（<code>{server_name}_{tool_name}</code>）的作用是什么？在什么场景下可以安全地禁用它？</p>
+<p><strong>4. （高级）</strong> 参考材料中 OAuth Token 的自动刷新机制采用了双重检查锁定模式（double-checked locking）。为什么要先检查 token 是否过期，获取锁后再检查一次？</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="长时记忆系统"><a class="header" href="#长时记忆系统">长时记忆系统</a></h1>
+<h2 id="前端视角理解-5"><a class="header" href="#前端视角理解-5">前端视角理解</a></h2>
+<p>类比 <strong>localStorage + IndexedDB + Service Worker</strong>：</p>
+<ul>
+<li><strong>LocalStorage</strong> = 简单键值对 → 类比记忆的 facts</li>
+<li><strong>IndexedDB</strong> = 结构化存储 → 类比记忆的 user/history 摘要</li>
+<li><strong>Service Worker</strong> = 后台同步 → 类比 MemoryUpdateQueue 防抖更新</li>
+<li><strong>Clear Site Data</strong> = 清除记忆</li>
+</ul>
+<p>或者类比 <strong>浏览器的自动填充（Autofill）</strong>：</p>
+<ul>
+<li>记住你的偏好（语言、主题）</li>
+<li>记住你的信息（地址、电话）</li>
+<li>跨会话持久化</li>
+</ul>
+<h2 id="记忆架构"><a class="header" href="#记忆架构">记忆架构</a></h2>
+<pre><code>用户消息
+    ↓
+MemoryMiddleware
+    ├── 检查是否启用
+    ├── 过滤：只保留用户输入 + 助手纯文本
+    ├── 移除：工具调用、上传块
+    └── 检测：纠错/强化信号
+        ↓
+MemoryUpdateQueue（防抖队列）
+    ├── 按 (thread_id, user_id, agent_name) 去重
+    ├── 可配置 debounce_seconds
+    └── 处理间隔 0.5s
+        ↓
+MemoryUpdater（LLM 驱动的更新器）
+    ├── 使用同步 model.invoke()
+    ├── 若在事件循环中 → 用 ThreadPoolExecutor
+    └── _apply_updates()
+        ↓
+MemoryStorage（持久化）
+    └── FileMemoryStorage（JSON 文件）
+        └── 每个 (user_id, agent_name) 一条记录
+</code></pre>
+<h2 id="记忆数据结构"><a class="header" href="#记忆数据结构">记忆数据结构</a></h2>
+<pre><code class="language-json">{
+  "version": "1.0",
+  "lastUpdated": "2025-01-01T00:00:00Z",
+  "user": {
+    "workContext": {
+      "summary": "前端开发，React 专家",
+      "updatedAt": "2025-01-01T00:00:00Z"
+    },
+    "personalContext": {
+      "summary": "喜欢简洁优雅的代码",
+      "updatedAt": "2025-01-01T00:00:00Z"
+    },
+    "topOfMind": {
+      "summary": "正在研究 AI Agent",
+      "updatedAt": "2025-01-01T00:00:00Z"
+    }
+  },
+  "history": {
+    "recentMonths": { "summary": "...", "updatedAt": "..." },
+    "earlierContext": { "summary": "...", "updatedAt": "..." },
+    "longTermBackground": { "summary": "...", "updatedAt": "..." }
+  },
+  "facts": [
+    {
+      "id": "uuid",
+      "content": "用户使用 Mac + VSCode",
+      "category": "context",
+      "confidence": 0.95,
+      "createdAt": "2025-01-01T00:00:00Z",
+      "source": "thread_xxx"
+    }
+  ]
+}
+</code></pre>
+<h2 id="事实类型"><a class="header" href="#事实类型">事实类型</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>分类</th><th>说明</th><th>示例</th></tr>
+</thead>
+<tbody>
+<tr><td>context</td><td>上下文信息</td><td>用户使用 React 18</td></tr>
+<tr><td>preference</td><td>偏好</td><td>用户喜欢 TypeScript</td></tr>
+<tr><td>correction</td><td>纠错</td><td>用户更正了技术栈信息</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="防抖机制"><a class="header" href="#防抖机制">防抖机制</a></h2>
+<pre><code class="language-python"># 类比：React 中的 debounce hook
+class MemoryUpdateQueue:
+    debounce_seconds: int  # 默认值可配置
+    # 如果 5 秒内重复请求 → 合并为一次更新
+    # 避免频繁调用 LLM 做记忆更新
+</code></pre>
+<h2 id="记忆加载流程"><a class="header" href="#记忆加载流程">记忆加载流程</a></h2>
+<pre><code>1. 对话开始时
+        ↓
+2. MemoryMiddleware.before_agent()
+   ├── 读取 当前 (user_id, agent_name) 的记忆
+   ├── 格式化为 Context 注入系统提示词
+   └── 例如："关于用户的信息：..."
+        ↓
+3. 对话结束时
+        ↓
+4. MemoryMiddleware.after_agent()
+   ├── 提取新信息（用户说了什么）
+   ├── 确认不是纠正/强化
+   └── 排入更新队列
+        ↓
+5. MemoryUpdater
+   ├── 调用 LLM 分析：哪些信息值得记住？
+   ├── 更新 user/history 摘要
+   ├── 添加/移除 facts
+   └── 按 max_facts 截断
+        ↓
+6. FileMemoryStorage.save()
+   └── 写回 JSON 文件
+</code></pre>
+<h2 id="记忆的忘记机制"><a class="header" href="#记忆的忘记机制">记忆的“忘记“机制</a></h2>
+<ul>
+<li><code>max_facts</code> 限制：超过上限时，低 confidence 的事实先被淘汰</li>
+<li>纠错信号：用户明确的更正会提高或降低 confidence</li>
+<li>重复检测：重复的事实不会累积</li>
+</ul>
+<h2 id="关键源码路径-5"><a class="header" href="#关键源码路径-5">关键源码路径</a></h2>
+<pre><code class="language-python">backend/packages/harness/deerflow/agents/memory/
+├── memory_middleware.py    # 记忆中间件（切入 Agent 生命周期）
+├── queue.py                # 防抖更新队列（MemoryUpdateQueue）
+├── updater.py              # LLM 驱动的记忆更新器（MemoryUpdater）
+├── storage.py              # 记忆存储抽象 + 文件实现
+├── prompt.py               # 记忆更新提示词
+├── types.py                # 类型定义
+└── config.py               # 记忆配置
+</code></pre>
+<hr>
+<h2 id="复习习题-9"><a class="header" href="#复习习题-9">复习习题</a></h2>
+<ol>
+<li>（初级）DeerFlow 的记忆系统分为哪三个层次？各自使用什么存储机制？</li>
+<li>（中级）MemoryUpdateQueue 的防抖机制是如何工作的？参数 <code>debounce_seconds</code> 值设得过小或过大会分别导致什么问题？</li>
+<li>（中级）记忆数据中的 <code>confidence</code> 字段和 <code>verified</code> 字段分别表示什么？纠错信号（用户明确更正）如何影响这些值？</li>
+<li>（高级）参考材料提到“记忆整合的摘要生成会消耗额外 Token“。在高频写入场景下，应该如何设计整合策略以避免阻塞主 Agent 的响应时间？</li>
+<li>（高级）企业级场景中，记忆按租户/项目隔离是如何实现的？如果缺乏隔离机制，一个用户的操作会如何影响另一个用户的体验？</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="上下文工程"><a class="header" href="#上下文工程">上下文工程</a></h1>
+<h2 id="前端视角理解-6"><a class="header" href="#前端视角理解-6">前端视角理解</a></h2>
+<p>上下文管理类比 <strong>React 的 Virtual DOM diff + 增量更新</strong>：</p>
+<ul>
+<li>全量渲染 → 发完整上下文 → 太贵</li>
+<li>Virtual DOM diff → 上下文摘要 → 保留关键信息</li>
+<li>增量更新 → 追加新内容</li>
+<li>GC 回收 → 移除不再需要的上下文</li>
+</ul>
+<p>也可以类比 <strong>浏览器对网络请求的优化</strong>：</p>
+<ul>
+<li>HTTP 压缩（gzip）→ 上下文摘要</li>
+<li>缓存策略（Cache-Control）→ 重复利用</li>
+<li>分页加载（Pagination）→ 分段处理</li>
+<li>垃圾回收（Memory GC）→ 淘汰旧消息</li>
+</ul>
+<h2 id="上下文挑战"><a class="header" href="#上下文挑战">上下文挑战</a></h2>
+<p>LLM 的上下文窗口虽大（100k+ tokens），但：</p>
+<ul>
+<li>长上下文<strong>贵</strong>（token = 钱）</li>
+<li>长上下文<strong>慢</strong>（推理时间增长）</li>
+<li>长上下文可能<strong>注意力稀释</strong></li>
+</ul>
+<p>DeerFlow 通过三层策略解决：</p>
+<h2 id="策略一子代理上下文隔离"><a class="header" href="#策略一子代理上下文隔离">策略一：子代理上下文隔离</a></h2>
+<pre><code>主导代理上下文（大）
+├── 目标：用户需求和全局计划
+├── 历史：仅保留关键决策
+├── 工具：全部可用
+└── 技能：所有启用技能
+        ↓  任务分解
+子代理A上下文（小）       子代理B上下文（小）
+├── 目标：子任务A           ├── 目标：子任务B
+├── 历史：仅子任务A相关      ├── 历史：仅子任务B相关
+├── 工具：过滤后的工具集      ├── 工具：过滤后的工具集
+└── 技能：子任务所需技能      └── 技能：子任务所需技能
+</code></pre>
+<p><strong>核心原则</strong>：每个子代理只能看到自己需要的上下文，不能窥见主导代理或其他子代理的上下文。</p>
+<h2 id="策略二总结"><a class="header" href="#策略二总结">策略二：总结</a></h2>
+<pre><code>SummarizationMiddleware
+        ↓
+当上下文超过 tokens 阈值时激活（可配置）
+        ↓
+keep_tokens: 保留最近的 token 数
+trim_tokens: 超过此值时触发摘要
+        ↓
+对早期消息进行总结压缩
+        ↓
+保持 LLM 对最新消息的全分辨率访问
+</code></pre>
+<h2 id="策略三严格工具调用恢复"><a class="header" href="#策略三严格工具调用恢复">策略三：严格工具调用恢复</a></h2>
+<p>当 LLM 提供者中断工具调用循环时（比如强制停止），DeerFlow 会：</p>
+<pre><code>1. 检测提供者的中断
+        ↓
+2. 剥离 raw tool-call 元数据
+        ↓
+3. 为悬挂的工具调用注入占位结果
+        ↓
+4. 下次模型调用前恢复完整的历史
+        ↓
+5. 防止 OpenAI 兼容推理模型因 tool_call_id 校验失败
+</code></pre>
+<p><strong>前端类比</strong>：类似 Redux 中间件中处理取消的 API 请求——dispatch 一个 fallback action 避免状态不一致。</p>
+<h2 id="工程意义"><a class="header" href="#工程意义">工程意义</a></h2>
+<pre><code>无上下文工程             有上下文工程
+──────────────────────────────────────
+提示词逐渐膨胀           上下文稳定在合理范围
+早期信息被遗忘           早期信息被摘要保留
+子代理互相干扰           子代理完全隔离
+长任务 OOM              长任务稳定运行
+工具调用链条断裂         工具调用自动恢复
+</code></pre>
+<h2 id="关键源码路径-6"><a class="header" href="#关键源码路径-6">关键源码路径</a></h2>
+<pre><code class="language-python">backend/packages/harness/deerflow/agents/
+├── lead_agent/
+│   ├── agent.py             ← 上下文隔离（子代理专用工厂）
+│   └── system_prompt.py     ← 系统提示词注入
+├── middlewares/
+│   ├── summarization.py     ← 总结中间件
+│   └── deferred_tool_filter.py  ← 延迟加载的工具过滤
+└── subagents/
+    └── executor.py          ← 子代理上下文构建
+</code></pre>
+<hr>
+<h2 id="复习习题-10"><a class="header" href="#复习习题-10">复习习题</a></h2>
+<ol>
+<li>（初级）DeerFlow 的上下文工程面临哪三个核心挑战？请分别用一句话概括。</li>
+<li>（中级）SummarizationMiddleware 在什么条件下触发上下文压缩？压缩的触发阈值（<code>threshold_tokens</code>）设置过高或过低会有什么影响？</li>
+<li>（中级）子代理上下文隔离的工作原理是什么？为什么每个子代理“只能看到自己需要的上下文“能有效解决上下文膨胀问题？</li>
+<li>（高级）参考材料中提出了 Token 预算分配的概念（System 15%/Session 60%/Turn 25%）。如果预算方案不合理（例如 System 占用过多），会出现什么实际后果？</li>
+<li>（高级）参考材料警告“过度压缩上下文可能导致关键信息丢失——建议在压缩前后对核心事实进行一致性校验“。你会如何设计这种一致性校验机制？</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="gateway-api"><a class="header" href="#gateway-api">Gateway API</a></h1>
+<h2 id="前端视角理解-7"><a class="header" href="#前端视角理解-7">前端视角理解</a></h2>
+<p>类比 <strong>Next.js 的 API Routes + tRPC</strong>：</p>
+<ul>
+<li>FastAPI 路由 = Next.js <code>app/api/</code> 路由</li>
+<li>Pydantic 模型 = Zod schema（请求/响应校验）</li>
+<li>SSE 流式 = Server-Sent Events（类似 chat.completions）</li>
+<li>LangGraph 兼容 = tRPC 兼容（多客户端支持）</li>
+</ul>
+<h2 id="api-路由总览"><a class="header" href="#api-路由总览">API 路由总览</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>路由器</th><th>挂载点</th><th>用途</th><th>前端类比</th></tr>
+</thead>
+<tbody>
+<tr><td>models</td><td><code>/api/models</code></td><td>模型列表查询</td><td>GET /api/products</td></tr>
+<tr><td>mcp</td><td><code>/api/mcp</code></td><td>MCP 服务器 CRUD</td><td>CRUD /api/plugins</td></tr>
+<tr><td>memory</td><td><code>/api/memory</code></td><td>记忆读写清除</td><td>类似 localStorage API</td></tr>
+<tr><td>skills</td><td><code>/api/skills</code></td><td>技能管理</td><td>CRUD /api/extensions</td></tr>
+<tr><td>artifacts</td><td><code>/api/threads/{id}/artifacts</code></td><td>文件下载</td><td>GET /api/download</td></tr>
+<tr><td>uploads</td><td><code>/api/threads/{id}/uploads</code></td><td>文件上传</td><td>POST /api/upload</td></tr>
+<tr><td>threads</td><td><code>/api/threads/{id}</code></td><td>线程清理</td><td>DELETE /api/sessions</td></tr>
+<tr><td>agents</td><td><code>/api/agents</code></td><td>自定义 Agent CRUD</td><td>CRUD /api/configs</td></tr>
+<tr><td>suggestions</td><td><code>/api/threads/{id}/suggestions</code></td><td>后续问题生成</td><td>GET /api/chat/suggestions</td></tr>
+<tr><td>channels</td><td><code>/api/channels</code></td><td>IM 渠道管理</td><td>CRUD /api/integrations</td></tr>
+<tr><td>auth</td><td><code>/api/v1/auth</code></td><td>认证</td><td>/api/login</td></tr>
+<tr><td>feedback</td><td><code>/api/threads/{id}/runs/{rid}/feedback</code></td><td>反馈</td><td>POST /api/feedback</td></tr>
+<tr><td>runs</td><td><code>/api/runs/*</code></td><td>无状态运行</td><td>POST /api/execute</td></tr>
+<tr><td>thread_runs</td><td><code>/api/threads/{id}/runs/*</code></td><td>基于线程的运行</td><td>POST /api/conversations</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="网关中间件"><a class="header" href="#网关中间件">网关中间件</a></h2>
+<pre><code>请求进入
+    ↓
+AuthMiddleware         ← 认证拦截（拒绝未认证请求）
+    ↓
+CSRFMiddleware         ← CSRF 双提交 Cookie 防护
+    ↓
+CORSMiddleware         ← CORS（可选，源自配置文件）
+    ↓
+路由分发
+</code></pre>
+<h2 id="langgraph-兼容-api"><a class="header" href="#langgraph-兼容-api">LangGraph 兼容 API</a></h2>
+<p>DeerFlow 的 <code>/api/langgraph/*</code> 路径通过 Nginx 重写为 <code>/api/*</code>：</p>
+<pre><code>Nginx 重写规则：
+/api/langgraph/threads → /api/threads
+/api/langgraph/runs    → /api/runs
+
+好处：兼容 LangGraph SDK 客户端
+     = 你可以用 LangGraph 的 JS/Python SDK 连接 DeerFlow
+</code></pre>
+<h2 id="流式响应sse"><a class="header" href="#流式响应sse">流式响应（SSE）</a></h2>
+<pre><code class="language-python"># 流式事件类型：
+event: metadata    # 运行元数据（run_id, thread_id）
+event: values      # 状态快照
+event: messages    # AI 消息块（增量）
+event: end         # 运行结束
+</code></pre>
+<p><strong>前端消费方式</strong>：</p>
+<pre><code class="language-typescript">// 前端，使用 EventSource 或 fetch + ReadableStream
+const response = await fetch('/api/runs/stream', { method: 'POST', body: ... })
+const reader = response.body.getReader()
+// 读取 SSE 事件流...
+</code></pre>
+<h2 id="健康检查"><a class="header" href="#健康检查">健康检查</a></h2>
+<pre><code>GET /health → 200 OK（服务存活检查）
+</code></pre>
+<h2 id="应用生命周期"><a class="header" href="#应用生命周期">应用生命周期</a></h2>
+<pre><code class="language-python"># 启动时
+@app.on_event("startup")
+    ├── 加载配置
+    ├── 初始化 LangGraph 运行时
+    ├── 管理员引导
+    └── 启动 IM 渠道服务
+
+# 关闭时
+@app.on_event("shutdown")
+    ├── 渠道服务关闭（5秒超时）
+    └── 清理资源
+</code></pre>
+<h2 id="关键源码路径-7"><a class="header" href="#关键源码路径-7">关键源码路径</a></h2>
+<pre><code class="language-python">backend/app/gateway/
+├── app.py                 # FastAPI 应用入口
+├── dependencies.py        # 依赖注入
+├── middleware.py           # 认证/CORS/CSRF 中间件
+└── routers/               # 17 个路由模块
+    ├── models.py
+    ├── thread_runs.py
+    ├── runs.py
+    ├── mcp.py
+    ├── skills.py
+    ├── uploads.py
+    ├── threads.py
+    ├── artifacts.py
+    ├── agents.py
+    ├── suggestions.py
+    ├── channels.py
+    ├── feedback.py
+    ├── auth.py
+    ├── memory.py
+    └── assistants_compat.py
+</code></pre>
+<hr>
+<h2 id="复习习题-11"><a class="header" href="#复习习题-11">复习习题</a></h2>
+<ol>
+<li>（初级）Gateway API 有哪些核心路由模块？列出至少 5 个。</li>
+<li>（中级）<code>/api/langgraph/*</code> 路径在 Nginx 中被重写为 <code>/api/*</code>。这种设计带来了什么好处？它支持哪些客户端 SDK 直接连接？</li>
+<li>（中级）参考材料中提到 Gateway 和 LangGraph Server 是分开部署的（不同端口），但当前文档描述 Gateway 内嵌 Agent 运行时。两种架构各自的优缺点是什么？</li>
+<li>（高级）SSE 流式响应中的四种事件类型（metadata/values/messages/end）分别在前端如何消费？如果前端需要对消息做增量渲染（而不是每次都替换全部），应该监听哪个事件？</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="im-渠道集成"><a class="header" href="#im-渠道集成">IM 渠道集成</a></h1>
+<h2 id="前端视角理解-8"><a class="header" href="#前端视角理解-8">前端视角理解</a></h2>
+<p>类比 <strong>WebSocket + Webhook + OAuth 整合</strong>：</p>
+<ul>
+<li>每个 IM 渠道 = 一个独立的 WebSocket 客户端</li>
+<li>渠道管理器 = WebSocket 连接池</li>
+<li>消息路由 = Pub/Sub 模式</li>
+</ul>
+<p>也可以类比 <strong>第三方 OAuth 登录</strong>：</p>
+<ul>
+<li>Telegram = “Sign in with Telegram”</li>
+<li>Slack = “Add to Slack”</li>
+<li>飞书 = “飞书应用”</li>
+</ul>
+<h2 id="支持的-im-渠道"><a class="header" href="#支持的-im-渠道">支持的 IM 渠道</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>渠道</th><th>通信方式</th><th>配置难度</th><th>前端类比</th></tr>
+</thead>
+<tbody>
+<tr><td>Telegram</td><td>Bot API（长轮询）</td><td>简单</td><td>对接 Telegram Bot</td></tr>
+<tr><td>Slack</td><td>Socket Mode</td><td>中等</td><td>安装 Slack App</td></tr>
+<tr><td>飞书</td><td>WebSocket</td><td>中等</td><td>创建飞书应用</td></tr>
+<tr><td>企业微信</td><td>WebSocket</td><td>中等</td><td>创建企业微信 Bot</td></tr>
+<tr><td>微信</td><td>Tencent iLink（长轮询）</td><td>中等</td><td>微信 Bot 对接</td></tr>
+<tr><td>钉钉</td><td>Stream Push（WebSocket）</td><td>中等</td><td>创建钉钉应用</td></tr>
+<tr><td>Discord</td><td>WebSocket</td><td>简单</td><td>创建 Discord Bot</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="渠道配置示例"><a class="header" href="#渠道配置示例">渠道配置示例</a></h2>
+<pre><code class="language-yaml">channels:
+  telegram:
+    enabled: true
+    bot_token: $TELEGRAM_BOT_TOKEN
+    allowed_users: []  # 空 = 允许所有人
+
+  slack:
+    enabled: true
+    bot_token: $SLACK_BOT_TOKEN
+    app_token: $SLACK_APP_TOKEN
+    allowed_users: []
+
+  feishu:
+    enabled: true
+    app_id: $FEISHU_APP_ID
+    app_secret: $FEISHU_APP_SECRET
+</code></pre>
+<h2 id="渠道架构"><a class="header" href="#渠道架构">渠道架构</a></h2>
+<pre><code>渠道服务（启动时初始化）
+    │
+    ├── Telegram Worker
+    │   ├── 长轮询 /getUpdates
+    │   ├── 消息处理 → Gateway API
+    │   └── 响应发送
+    │
+    ├── Slack Worker
+    │   ├── Socket Mode 连接
+    │   ├── 消息事件监听
+    │   └── 消息发送
+    │
+    ├── 飞书 Worker
+    │   ├── WebSocket 长连接
+    │   ├── 事件接收
+    │   └── 消息回复
+    │
+    └── ...
+</code></pre>
+<h2 id="会话路由"><a class="header" href="#会话路由">会话路由</a></h2>
+<pre><code>IM 消息 → 渠道 Worker
+              ↓
+       Gateway API（内部认证）
+              ↓
+       lead_agent（或 custom_agent）
+              ↓
+              ↕
+         LangGraph 运行时
+              ↓
+        SSE 流式响应回渠道
+</code></pre>
+<p><strong>重要</strong>：IM 渠道的 <code>assistant_id</code> 可配置：</p>
+<pre><code class="language-yaml">channels:
+  session:
+    assistant_id: lead_agent    # 默认主导代理
+    # 或自定义 agent：
+    # assistant_id: mobile-agent → 路由到 custom agent
+</code></pre>
+<h2 id="im-渠道命令"><a class="header" href="#im-渠道命令">IM 渠道命令</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>命令</th><th>功能</th></tr>
+</thead>
+<tbody>
+<tr><td>/new</td><td>开始新对话</td></tr>
+<tr><td>/status</td><td>查看当前线程</td></tr>
+<tr><td>/models</td><td>列出可用模型</td></tr>
+<tr><td>/memory</td><td>查看记忆</td></tr>
+<tr><td>/help</td><td>显示帮助</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="关键源码路径-8"><a class="header" href="#关键源码路径-8">关键源码路径</a></h2>
+<pre><code class="language-python">backend/app/channels/
+├── base.py              # 渠道抽象基类
+├── service.py           # 渠道生命周期管理
+├── manager.py           # 渠道注册和路由
+├── message_bus.py       # 内部消息总线
+├── store.py             # 持久化存储
+├── commands.py          # 命令处理
+├── telegram.py          # Telegram 实现
+├── slack.py             # Slack 实现
+├── feishu.py            # 飞书实现
+├── wechat.py            # 微信实现
+├── wecom.py             # 企业微信实现
+├── dingtalk.py          # 钉钉实现
+└── discord.py           # Discord 实现
+</code></pre>
+<hr>
+<h2 id="复习习题-12"><a class="header" href="#复习习题-12">复习习题</a></h2>
+<ol>
+<li>（初级）DeerFlow 支持哪些 IM 渠道？请列举至少 5 个。</li>
+<li>（中级）不同 IM 渠道使用不同的通信方式（长轮询、Socket Mode、WebSocket、Stream Push）。选择这些不同方式的理由是什么？受什么因素制约？</li>
+<li>（中级）IM 渠道中 <code>assistant_id</code> 可配置为 <code>lead_agent</code> 或自定义 agent。这种配置方式如何实现多 Agent 路由？有何使用场景？</li>
+<li>（高级）IM 渠道的会话生命周期管理面临什么挑战？例如，用户在某渠道发送消息后退出，一段时间后重新进入，如何恢复之前的对话状态？</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="前端架构"><a class="header" href="#前端架构">前端架构</a></h1>
+<h2 id="技术栈"><a class="header" href="#技术栈">技术栈</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>领域</th><th>技术选型</th></tr>
+</thead>
+<tbody>
+<tr><td>框架</td><td>Next.js 16</td></tr>
+<tr><td>UI 库</td><td>React 19</td></tr>
+<tr><td>类型系统</td><td>TypeScript</td></tr>
+<tr><td>包管理</td><td>pnpm</td></tr>
+<tr><td>测试</td><td>Vitest + Playwright</td></tr>
+<tr><td>样式</td><td>Tailwind CSS</td></tr>
+<tr><td>代码规范</td><td>ESLint + Prettier</td></tr>
+<tr><td>认证</td><td>Better Auth</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="目录结构"><a class="header" href="#目录结构">目录结构</a></h2>
+<pre><code class="language-typescript">frontend/src/
+├── app/                    // Next.js 页面
+│   ├── (auth)/            // 认证页面布局
+│   ├── [lang]/            // 国际化路由
+│   │   └── page.tsx       // 聊天主页面
+│   ├── api/               // Next.js API 路由
+│   ├── blog/              // 博客页面
+│   ├── layout.tsx         // 根布局
+│   └── workspace/         // 工作区页面
+
+├── components/             // React 组件
+│   ├── ai-elements/       // AI 相关 UI（消息气泡、流式文本）
+│   ├── landing/           // 着陆页组件
+│   ├── ui/                // 通用 UI 组件库
+│   ├── workspace/         // 工作区布局
+│   ├── query-client-provider.tsx  // TanStack Query
+│   └── theme-provider.tsx // 主题切换
+
+├── core/                  // 业务逻辑（24 个模块）
+│   ├── agents/           // Agent 配置管理
+│   ├── api/              // API 客户端
+│   ├── artifacts/        // 文件下载
+│   ├── auth/             // 认证逻辑
+│   ├── config/           // 前端配置
+│   ├── i18n/             // 国际化
+│   ├── mcp/              // MCP 管理（UI 侧）
+│   ├── memory/           // 记忆查看/管理
+│   ├── messages/         // 消息格式化
+│   ├── models/           // 模型选择
+│   ├── settings/         // 用户设置
+│   ├── skills/           // 技能管理
+│   ├── streamdown/       // 流式 Markdown
+│   ├── threads/          // 线程 CRUD
+│   ├── todos/            // 任务列表
+│   ├── tools/            // 工具 UI
+│   ├── uploads/          // 文件上传
+│   └── utils/            // 通用工具
+
+├── hooks/                // 自定义 React Hooks
+├── lib/                  // 第三方库配置
+├── styles/               // 样式文件
+└── typings/              // TypeScript 类型声明
+</code></pre>
+<h2 id="核心数据流前端视角"><a class="header" href="#核心数据流前端视角">核心数据流（前端视角）</a></h2>
+<pre><code>用户输入消息
+    ↓
+core/threads/  ← 创建/获取线程
+core/api/      ← API 请求
+    ↓
+Gateway API (8001)
+    ↓
+SSE 流式事件
+    ↓
+core/streamdown/  ← 流式 Markdown 渲染
+    ↓
+components/ai-elements/  ← 消息气泡 UI
+</code></pre>
+<h2 id="关键业务模块详解"><a class="header" href="#关键业务模块详解">关键业务模块详解</a></h2>
+<h3 id="线程管理corethreads"><a class="header" href="#线程管理corethreads">线程管理（core/threads/）</a></h3>
+<ul>
+<li>类似于聊天会话管理</li>
+<li>CRUD 操作：创建、读取、列出、删除</li>
+<li>状态管理：当前线程、历史列表、加载状态</li>
+</ul>
+<h3 id="api-客户端coreapi"><a class="header" href="#api-客户端coreapi">API 客户端（core/api/）</a></h3>
+<ul>
+<li>fetch 封装</li>
+<li>认证 token 注入</li>
+<li>错误处理</li>
+<li>请求取消</li>
+</ul>
+<h3 id="流式渲染corestreamdown"><a class="header" href="#流式渲染corestreamdown">流式渲染（core/streamdown/）</a></h3>
+<ul>
+<li>流式 Markdown 解析与渲染</li>
+<li>增量更新 DOM</li>
+<li>支持代码块、数学公式等</li>
+</ul>
+<h3 id="消息格式化coremessages"><a class="header" href="#消息格式化coremessages">消息格式化（core/messages/）</a></h3>
+<ul>
+<li>按消息类型渲染不同 UI</li>
+<li>AI 消息 vs 用户消息</li>
+<li>工具调用展示</li>
+<li>图片/文件嵌入</li>
+</ul>
+<h2 id="构建与验证"><a class="header" href="#构建与验证">构建与验证</a></h2>
+<pre><code class="language-bash"># 开发
+pnpm dev
+
+# 检查
+pnpm lint &amp;&amp; pnpm typecheck
+
+# 测试
+pnpm test           # 单元测试
+pnpm test:e2e       # E2E 测试
+
+# 构建
+BETTER_AUTH_SECRET=local-dev-secret pnpm build
+</code></pre>
+<h2 id="关键文件"><a class="header" href="#关键文件">关键文件</a></h2>
+<pre><code class="language-typescript">frontend/
+├── next.config.js         // Next.js 配置
+├── tailwind.config.js     // Tailwind 配置
+├── tsconfig.json          // TypeScript 配置
+├── vitest.config.ts       // Vitest 配置
+├── playwright.config.ts   // Playwright 配置
+├── eslint.config.js       // ESLint 配置
+└── package.json           // 依赖管理
+</code></pre>
+<hr>
+<h2 id="复习习题-13"><a class="header" href="#复习习题-13">复习习题</a></h2>
+<ol>
+<li>（初级）前端技术栈使用了哪些主要技术？框架、UI 库、测试工具分别是什么？</li>
+<li>（中级）<code>core/</code> 目录下有哪些业务模块？其中 <code>streamdown/</code> 模块的核心职责是什么？</li>
+<li>（中级）前端的 SSE 流式消息处理流程是怎样的？从用户输入到消息渲染的完整路径是什么？</li>
+<li>（高级）参考材料提到前端通过 EventSource 连接到 LangGraph Server 的 SSE 端点。如果连接意外断开，前端应该如何实现重连机制？重连后如何处理可能丢失的消息片段？</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="数据与请求流程"><a class="header" href="#数据与请求流程">数据与请求流程</a></h1>
+<h2 id="完整请求生命周期"><a class="header" href="#完整请求生命周期">完整请求生命周期</a></h2>
+<pre><code>用户（浏览器 / IM / CLI）
+    │
+    ▼
+┌──────────────────────────────────────────────────────┐
+│                   1. 请求入口                          │
+│                                                      │
+│   ┌─ 浏览器 ─┐   ┌─ IM 渠道 ─┐   ┌─ Python SDK ─┐  │
+│   │  :3000   │   │ Telegram  │   │ client.py   │  │
+│   │  :2026   │   │ Slack/... │   │             │  │
+│   └──────────┘   └───────────┘   └─────────────┘  │
+│                                                     │
+└─────────────────────┬───────────────────────────────┘
+                      │
+                      ▼
+┌──────────────────────────────────────────────────────┐
+│                  2. 网关层                             │
+│                                                      │
+│   AuthMiddleware → CSRFMiddleware → CORSMiddleware   │
+│                           ↓                          │
+│                   路由分发                              │
+│   /api/runs/*    → runs.py     （无状态运行）          │
+│   /api/threads/  → thread_runs.py（有状态运行）       │
+│   /api/models    → models.py                          │
+└─────────────────────┬───────────────────────────────┘
+                      │
+                      ▼
+┌──────────────────────────────────────────────────────┐
+│                 3. 运行时层                             │
+│                                                      │
+│   run_agent()                                        │
+│       ↓                                              │
+│   创建 RunRecord（运行记录）                            │
+│       ↓                                              │
+│   构建 RunContext（checkpointer, store...）           │
+│       ↓                                              │
+│   调用 agent_factory(config) → 构建代理图             │
+│       ↓                                              │
+│   配置检查点 + 中断节点                                │
+│       ↓                                              │
+│   agent.astream() 开始执行                            │
+└─────────────────────┬───────────────────────────────┘
+                      │
+                      ▼
+┌──────────────────────────────────────────────────────┐
+│                 4. 代理执行层                           │
+│                                                      │
+│   ① 中间件管道（按序执行）                               │
+│   ├── before_agent 阶段                                │
+│   │   ├── ThreadDataMiddleware   → 初始化目录          │
+│   │   ├── UploadsMiddleware      → 处理上传            │
+│   │   ├── SandboxMiddleware      → 获取沙箱            │
+│   │   ├── SummarizationMiddleware → 上下文截断         │
+│   │   ├── MemoryMiddleware       → 注入记忆            │
+│   │   └── ...                                          │
+│   │                                                    │
+│   ② LLM 推理                                          │
+│   ├── 系统提示词 + 用户消息 + 上下文                    │
+│   ├── LLM 选择工具或生成响应                            │
+│   └── 返回 AI 消息或工具调用                            │
+│                                                       │
+│   ③ 工具执行（循环直到 LLM 返回最终响应）                │
+│   ├── 内置工具（present_file, ask_clarification...）    │
+│   ├── MCP 工具（通过 MCP 客户端）                       │
+│   ├── 沙箱工具（bash, read, write...）                  │
+│   └── ACP 工具（多代理工具）                            │
+│                                                       │
+│   ④ after_agent 阶段                                  │
+│   ├── TitleMiddleware       → 生成标题                 │
+│   ├── MemoryMiddleware      → 排队记忆更新             │
+│   ├── ClarificationMiddleware → 处理澄清              │
+│   └── ...                                             │
+│                                                       │
+│   ⑤ 子代理委派（如果需要）                               │
+│   ├── SubagentExecutor 创建子代理                       │
+│   ├── 独立上下文 + 独立模型                              │
+│   ├── 并行或串行执行                                    │
+│   └── 结果返回主导代理                                  │
+└─────────────────────┬───────────────────────────────┘
+                      │
+                      ▼
+┌──────────────────────────────────────────────────────┐
+│                  5. 流式输出层                          │
+│                                                      │
+│   StreamBridge → SSE 事件流                           │
+│       ↓                                              │
+│   event: metadata    (run_id, thread_id)             │
+│   event: values      (状态快照)                        │
+│   event: messages    (AI 消息增量)                     │
+│   event: end         (运行结束)                        │
+│       ↓                                              │
+│   Nginx 转发 → 浏览器 EventSource                    │
+│   或 → IM 渠道消息发送                                 │
+└──────────────────────────────────────────────────────┘
+                      │
+                      ▼
+┌──────────────────────────────────────────────────────┐
+│                  6. 持久化层                            │
+│                                                      │
+│   检查点 → 保存线程状态（可恢复）                        │
+│   记忆  → 异步更新记忆文件                              │
+│   日志  → 记录运行日志和 Token 使用                     │
+│   产物  → 文件保存到 outputs 目录                       │
+└──────────────────────────────────────────────────────┘
+</code></pre>
+<h2 id="典型用户请求的数据流"><a class="header" href="#典型用户请求的数据流">典型用户请求的数据流</a></h2>
+<h3 id="简单对话无工具调用"><a class="header" href="#简单对话无工具调用">简单对话（无工具调用）</a></h3>
+<pre><code>用户: "你好"
+    ↓
+core/api/  →  POST /api/runs
+    ↓
+Gateway → run_agent → 中间件 → LLM
+    ↓
+LLM 直接响应（无需工具）
+    ↓
+SSE: messages + end
+    ↓
+前端渲染: "你好！有什么可以帮助你的？"
+</code></pre>
+<h3 id="带工具调用的对话"><a class="header" href="#带工具调用的对话">带工具调用的对话</a></h3>
+<pre><code>用户: "搜索 AI Agent 的最新发展"
+    ↓
+Gateway → 中间件链 → LLM
+    ↓
+LLM 决定调用 tavily_search（工具调用）
+    ↓
+工具执行 → 结果返回 LLM
+    ↓
+LLM 继续推理 → 是否需要更多工具？
+    ↓
+如果需要 → 再次工具调用
+如果不需要 → 生成最终响应
+    ↓
+SSE: 流式返回回答
+    ↓
+同时：记忆中间件排队 → 异步更新记忆
+</code></pre>
+<h3 id="复杂任务子代理委派"><a class="header" href="#复杂任务子代理委派">复杂任务（子代理委派）</a></h3>
+<pre><code>用户: "写一份 AI Agent 行业报告"
+    ↓
+主导代理分析任务 → 决定委派
+    ↓
+SubagentExecutor 创建 3 个子代理：
+├── 子代理A：市场调研任务（并行）
+├── 子代理B：技术分析任务（并行）
+└── 子代理C：竞争分析任务（并行）
+    ↓
+每个子代理独立执行：
+├── 独立的上下文
+├── 独立的工具集
+└── 独立的结果
+    ↓
+子代理结果返回主导代理
+    ↓
+主导代理综合三份报告
+    ↓
+生成最终报告并写入文件
+    ↓
+SSE: 流式返回 + 文件链接
+</code></pre>
+<h2 id="嵌入模式数据流python-client"><a class="header" href="#嵌入模式数据流python-client">嵌入模式数据流（Python Client）</a></h2>
+<pre><code class="language-python">from deerflow.client import DeerFlowClient
+
+client = DeerFlowClient()
+
+# 直接用 Python 调用，不走 HTTP
+response = client.chat("分析这篇论文", thread_id="my-thread")
+
+# 内部流程（与 HTTP 请求相同，只是省去网络层）
+client.chat()
+    ↓
+run_agent()  # 直接调用运行时
+    ↓
+[同上 2-6 步]
+</code></pre>
+<hr>
+<h2 id="复习习题-14"><a class="header" href="#复习习题-14">复习习题</a></h2>
+<ol>
+<li>
+<p>（初级）一个典型的用户请求在 DeerFlow 中经历了哪几个主要层级（从浏览器到持久化）？</p>
+</li>
+<li>
+<p>（中级）流式输出层使用 SSE（Server-Sent Events）推送 4 种事件类型。请说明 <code>values</code> 和 <code>messages</code> 两种事件的区别，以及前端各自的使用方式。</p>
+</li>
+<li>
+<p>（中级）在“带工具调用的对话“流程中，LLM 推理和工具执行之间形成了循环。这个循环在什么条件下结束？如果工具调用进入死循环，系统如何保护自己？</p>
+</li>
+<li>
+<p>（高级）参考材料中提到嵌入模式（DeerFlowClient.chat）的内部流程与 HTTP 请求“相同，只是省去网络层“。这意味着嵌入模式仍然需要 LangGraph 运行时和中间件链。这种设计的选择带来了什么利弊？</p>
+</li>
+<li>
+<p>（高级）参考材料中 LangGraph Server（2024端口）和 Gateway API（8001端口）是分离的，但当前文档描述 Gateway 内嵌 Agent 运行时。这两种架构对数据流（第4步“代理执行层“）有何影响？特别是在扩展性方面。</p>
+</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="能力边界与扩展点"><a class="header" href="#能力边界与扩展点">能力边界与扩展点</a></h1>
+<h2 id="核心能力清单"><a class="header" href="#核心能力清单">核心能力清单</a></h2>
+<h3 id="deerflow-能做什么"><a class="header" href="#deerflow-能做什么">DeerFlow 能做什么？</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>能力</th><th>说明</th><th>配置</th></tr>
+</thead>
+<tbody>
+<tr><td>多模型支持</td><td>OpenAI、Claude、DeepSeek、vLLM 等</td><td>config.yaml models</td></tr>
+<tr><td>子代理委派</td><td>复杂任务自动分解、并行执行</td><td>subagents config</td></tr>
+<tr><td>沙箱执行</td><td>隔离的文件系统 + bash</td><td>sandbox config</td></tr>
+<tr><td>技能系统</td><td>21 个内置技能 + 自定义</td><td>skills/ 目录</td></tr>
+<tr><td>MCP 扩展</td><td>通过 MCP 协议接入任意工具</td><td>extensions_config.json</td></tr>
+<tr><td>长时记忆</td><td>跨会话用户偏好/知识持久化</td><td>memory config</td></tr>
+<tr><td>上下文管理</td><td>自动摘要、工具调用恢复</td><td>内置</td></tr>
+<tr><td>IM 集成</td><td>7 个 IM 平台</td><td>channels config</td></tr>
+<tr><td>嵌入模式</td><td>Python Client 进程内调用</td><td>client.py</td></tr>
+<tr><td>流式响应</td><td>SSE 实时推送</td><td>默认</td></tr>
+<tr><td>文件上传/下载</td><td>上传分析、下载产出</td><td>内置</td></tr>
+<tr><td>认证</td><td>登录/注册/CSRF 保护</td><td>auth config</td></tr>
+<tr><td>检查点</td><td>线程状态持久化/恢复</td><td>checkpointer config</td></tr>
+<tr><td>Token 追踪</td><td>用量统计</td><td>token_usage config</td></tr>
+</tbody>
+</table>
+</div>
+<h3 id="deerflow-不做什么"><a class="header" href="#deerflow-不做什么">DeerFlow 不做什么？</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>边界</th><th>说明</th><th>替代方案</th></tr>
+</thead>
+<tbody>
+<tr><td>不是 LLM</td><td>不提供模型推理，而是调用外部模型</td><td>配置 OpenAI/Claude 等</td></tr>
+<tr><td>不是数据库</td><td>不提供数据存储</td><td>接入 PostgreSQL/Redis</td></tr>
+<tr><td>不是消息队列</td><td>不提供高吞吐消息处理</td><td>接入 Kafka/RabbitMQ</td></tr>
+<tr><td>不是监控系统</td><td>只提供基础日志</td><td>对接 LangSmith/Langfuse</td></tr>
+<tr><td>不是 CI/CD</td><td>不提供发布流水线</td><td>配置自己的 CI</td></tr>
+<tr><td>不是 API 网关</td><td>专注于 AI 代理，不代替 Nginx/Kong</td><td>前面加 Nginx</td></tr>
+<tr><td>不是前端框架</td><td>内置 Next.js 界面可替换</td><td>用 Gateway API 自定义前端</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="扩展点总览"><a class="header" href="#扩展点总览">扩展点总览</a></h2>
+<pre><code>                    ┌─────────────────────┐
+                    │   扩展方式总览        │
+                    ├─────────────────────┤
+                    │ 1. 自定义模型提供商    │
+                    │ 2. 自定义中间件        │
+                    │ 3. 自定义沙箱提供商    │
+                    │ 4. 自定义技能          │
+                    │ 5. MCP 工具            │
+                    │ 6. ACP 代理            │
+                    │ 7. 自定义网关路由      │
+                    │ 8. 自定义 IM 渠道      │
+                    │ 9. 自定记忆存储        │
+                    │ 10. API 客户端集成     │
+                    └─────────────────────┘
+</code></pre>
+<h2 id="扩展点详解"><a class="header" href="#扩展点详解">扩展点详解</a></h2>
+<h3 id="1-自定义模型提供商"><a class="header" href="#1-自定义模型提供商">1. 自定义模型提供商</a></h3>
+<p>通过 <code>use</code> 字段指向任意 Python 类：</p>
+<pre><code class="language-yaml">models:
+  - name: my-model
+    use: my_module:MyChatModel
+    model: my-model-name
+    api_key: $MY_API_KEY
+</code></pre>
+<p><strong>接口</strong>：实现 <code>BaseChatModel</code>（LangChain 标准接口）</p>
+<h3 id="2-自定义中间件"><a class="header" href="#2-自定义中间件">2. 自定义中间件</a></h3>
+<p>插入到中间件管道的任意位置：</p>
+<pre><code class="language-yaml">middlewares:
+  - use: my_module:MyMiddleware
+    priority: 12
+</code></pre>
+<p><strong>接口</strong>：继承 <code>BaseMiddleware</code>，实现 <code>before_agent</code> / <code>after_agent</code></p>
+<h3 id="3-自定义沙箱提供商"><a class="header" href="#3-自定义沙箱提供商">3. 自定义沙箱提供商</a></h3>
+<p>选择沙箱实现方式：</p>
+<pre><code class="language-yaml">sandbox:
+  use: my_module:MySandboxProvider
+</code></pre>
+<p><strong>接口</strong>：实现 <code>SandboxProvider</code>（acquire / get / release / reset / shutdown）</p>
+<h3 id="4-自定义技能"><a class="header" href="#4-自定义技能">4. 自定义技能</a></h3>
+<p>创建 SKILL.md 文件，放在 <code>skills/custom/</code> 下。</p>
+<h3 id="5-mcp-工具"><a class="header" href="#5-mcp-工具">5. MCP 工具</a></h3>
+<p>通过 <code>extensions_config.json</code> 配置 MCP 服务器。</p>
+<h3 id="6-acp-代理"><a class="header" href="#6-acp-代理">6. ACP 代理</a></h3>
+<p>配置 ACP 协议兼容的远程代理。</p>
+<h3 id="7-自定义网关路由"><a class="header" href="#7-自定义网关路由">7. 自定义网关路由</a></h3>
+<p>在 <code>app/gateway/routers/</code> 下添加新路由模块。</p>
+<h3 id="8-自定义-im-渠道"><a class="header" href="#8-自定义-im-渠道">8. 自定义 IM 渠道</a></h3>
+<p>在 <code>app/channels/</code> 下添加新渠道实现。</p>
+<h3 id="9-自定义记忆存储"><a class="header" href="#9-自定义记忆存储">9. 自定义记忆存储</a></h3>
+<pre><code class="language-yaml">memory:
+  storage_class: my_module:MyMemoryStorage
+</code></pre>
+<p><strong>接口</strong>：实现 <code>MemoryStorage</code>（load / reload / save）</p>
+<h3 id="10-api-客户端集成"><a class="header" href="#10-api-客户端集成">10. API 客户端集成</a></h3>
+<pre><code class="language-python"># 嵌入模式，直接调用运行时
+from deerflow.client import DeerFlowClient
+client = DeerFlowClient()
+</code></pre>
+<hr>
+<h2 id="复习习题-15"><a class="header" href="#复习习题-15">复习习题</a></h2>
+<ol>
+<li>
+<p>（初级）DeerFlow 明确“不做什么“中列出了哪些边界？请列举至少 4 项。</p>
+</li>
+<li>
+<p>（中级）DeerFlow 支持 10 种扩展方式。如果需求是“需要连接一个企业内部 API“，你应该选择哪种扩展方式？为什么？</p>
+</li>
+<li>
+<p>（中级）“自定义中间件“扩展点允许用户注入自己的中间件。在中间件管道中插入自定义中间件时，<code>priority</code> 数值的选择有什么讲究？放在太前面或太后面可能产生什么问题？</p>
+</li>
+<li>
+<p>（高级）参考材料中提出了 MCP 和 ClawHub 两种扩展方式。MCP 以协议标准化见长，ClawHub 以发现和安装机制见长。如果你要设计一个企业内部的“能力市场“，会结合两者的哪些优点？</p>
+</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="二次开发与封装指南"><a class="header" href="#二次开发与封装指南">二次开发与封装指南</a></h1>
+<h2 id="开发原则"><a class="header" href="#开发原则">开发原则</a></h2>
+<ol>
+<li><strong>从 Harness 层入手</strong>：核心框架在 <code>packages/harness/</code>，不依赖网关逻辑</li>
+<li><strong>遵循分离边界</strong>：<code>harness</code> 不能引用 <code>app</code></li>
+<li><strong>配置驱动</strong>：用 <code>config.yaml</code> 控制行为，避免硬编码</li>
+<li><strong>先单元，后集成</strong>：写好测试再改代码</li>
+</ol>
+<h2 id="常见二次开发场景"><a class="header" href="#常见二次开发场景">常见二次开发场景</a></h2>
+<h3 id="场景一添加自定义工具"><a class="header" href="#场景一添加自定义工具">场景一：添加自定义工具</a></h3>
+<p><strong>步骤：</strong></p>
+<ol>
+<li>在 <code>tools/builtins/</code> 下创建工具：</li>
+</ol>
+<pre><code class="language-python"># tools/builtins/my_tool.py
+from langchain_core.tools import tool
+
+@tool
+def my_tool(param: str) -&gt; str:
+    """工具描述（LLM 理解用途）"""
+    return f"处理结果: {param}"
+</code></pre>
+<ol start="2">
+<li>在 <code>config.yaml</code> 注册：</li>
+</ol>
+<pre><code class="language-yaml">tools:
+  - name: my_tool
+    display_name: 我的工具
+    function: tools.builtins.my_tool:my_tool
+    enabled: true
+</code></pre>
+<h3 id="场景二封装为独立服务"><a class="header" href="#场景二封装为独立服务">场景二：封装为独立服务</a></h3>
+<p>将 DeerFlow 嵌入到你的 Python 应用中：</p>
+<pre><code class="language-python">from deerflow.client import DeerFlowClient
+
+class MyService:
+    def __init__(self):
+        self.client = DeerFlowClient()
+
+    def analyze(self, text: str) -&gt; str:
+        response = self.client.chat(
+            f"分析以下内容：{text}",
+            thread_id="service-thread"
+        )
+        return response["messages"][-1]["content"]
+
+# 或集成到 FastAPI 应用
+from fastapi import FastAPI
+from deerflow.client import DeerFlowClient
+
+app = FastAPI()
+client = DeerFlowClient()
+
+@app.post("/analyze")
+async def analyze(text: str):
+    response = client.chat(text)
+    return {"result": response}
+</code></pre>
+<h3 id="场景三自定义前端"><a class="header" href="#场景三自定义前端">场景三：自定义前端</a></h3>
+<p>DeerFlow 的前端是 Next.js 应用。如果你需要：</p>
+<ul>
+<li><strong>保留 UI、改功能</strong> → 修改 <code>frontend/src/core/</code> 下的业务逻辑</li>
+<li><strong>完全替换前端</strong> → 使用 Gateway REST API + SSE 重新实现</li>
+</ul>
+<pre><code class="language-typescript">// 自定义前端示例：直接调用 API
+const API = 'http://localhost:8001'
+
+async function sendMessage(content: string) {
+  // 1. 创建运行
+  const run = await fetch(`${API}/api/runs`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      assistant_id: 'lead_agent',
+      input: { messages: [{ role: 'user', content }] }
+    })
+  })
+  const { run_id } = await run.json()
+
+  // 2. SSE 流式接收
+  const events = new EventSource(`${API}/api/runs/${run_id}/stream`)
+  events.onmessage = (event) =&gt; {
+    const data = JSON.parse(event.data)
+    if (data.type === 'messages') {
+      renderMessage(data.content)  // 你的渲染逻辑
+    }
+  }
+}
+</code></pre>
+<h3 id="场景四添加新的-im-渠道"><a class="header" href="#场景四添加新的-im-渠道">场景四：添加新的 IM 渠道</a></h3>
+<ol>
+<li>实现渠道基类：</li>
+</ol>
+<pre><code class="language-python"># app/channels/my_channel.py
+from app.channels.base import ChannelBase
+
+class MyChannel(ChannelBase):
+    async def start(self):
+        # 建立连接
+        pass
+
+    async def stop(self):
+        # 断开连接
+        pass
+
+    async def send_message(self, text: str, thread_id: str):
+        # 发送消息
+        pass
+</code></pre>
+<ol start="2">
+<li>在 <code>manager.py</code> 注册</li>
+<li>在 <code>config.yaml</code> 配置</li>
+</ol>
+<h3 id="场景五中间件开发"><a class="header" href="#场景五中间件开发">场景五：中间件开发</a></h3>
+<pre><code class="language-python"># 实现一个日志记录中间件
+class LoggingMiddleware(BaseMiddleware):
+    def before_agent(self, state: ThreadState) -&gt; ThreadState:
+        logger.info(f"Agent 开始执行, 消息数: {len(state['messages'])}")
+        return state
+
+    def after_agent(self, state: ThreadState) -&gt; ThreadState:
+        logger.info(f"Agent 执行完成")
+        return state
+</code></pre>
+<h3 id="场景六模型提供商适配"><a class="header" href="#场景六模型提供商适配">场景六：模型提供商适配</a></h3>
+<pre><code class="language-python"># 适配自定义模型
+from langchain_core.language_models import BaseChatModel
+
+class MyCustomModel(BaseChatModel):
+    def _generate(self, messages, stop, run_manager, **kwargs):
+        # 调用你的模型 API
+        response = call_my_api(messages)
+        return response
+
+    @property
+    def _llm_type(self) -&gt; str:
+        return "my-custom-model"
+</code></pre>
+<h2 id="测试策略"><a class="header" href="#测试策略">测试策略</a></h2>
+<pre><code class="language-bash"># 后端测试体系
+make test                          # 全部 ~277 个测试
+make test-blocking-io               # 阻塞 IO 检测
+
+# 前端测试体系
+cd frontend &amp;&amp; pnpm test           # 单元测试
+cd frontend &amp;&amp; pnpm test:e2e       # E2E 测试
+
+# Harness 边界测试
+pytest tests/test_harness_boundary.py  # 确保 app↛harness
+</code></pre>
+<h2 id="开发工作流"><a class="header" href="#开发工作流">开发工作流</a></h2>
+<pre><code class="language-bash"># 1. Fork &amp; Clone
+git clone https://github.com/bytedance/deer-flow.git
+
+# 2. 配置
+make setup
+
+# 3. 安装
+make install
+
+# 4. 启动开发服务
+make dev
+
+# 5. 修改代码 → 热重载自动生效
+
+# 6. 验证
+cd backend &amp;&amp; make lint &amp;&amp; make test
+cd frontend &amp;&amp; pnpm lint &amp;&amp; pnpm typecheck &amp;&amp; pnpm build
+
+# 7. 提交
+git add -A
+git commit -m "feat: 我的新功能"
+</code></pre>
+<hr>
+<h2 id="复习习题-16"><a class="header" href="#复习习题-16">复习习题</a></h2>
+<ol>
+<li>
+<p>（初级）二次开发的四个原则是什么？请简述每条原则的适用场景。</p>
+</li>
+<li>
+<p>（中级）如果你想在 DeerFlow 中添加一个自定义工具（比如调一个天气 API），需要完成哪些步骤？注册工具时 <code>config.yaml</code> 中的 <code>function</code> 字段格式是什么？</p>
+</li>
+<li>
+<p>（中级）DeerFlowClient 的 <code>chat()</code> 方法返回的只是最后一段 AI 文本。如果应用场景需要实时展示工具调用过程和中间思考，应该使用哪个方法？它返回什么类型的数据？</p>
+</li>
+<li>
+<p>（高级）参考材料中的客户端缓存机制会根据 <code>model_name</code>、<code>thinking_enabled</code> 等配置的变化自动重建 Agent。这种缓存策略的 key 设计是否完备？有没有遗漏的参数变化也应该触发重建？</p>
+</li>
+<li>
+<p>（高级）参考材料提供了自定义 Agent 工厂的完整示例（<code>make_custom_agent</code>）。请结合当前文档的“场景一：添加自定义工具“思考：如果某工具需要额外的审批检查，应该通过自定义中间件还是工具内部逻辑来实现？各自的优缺点是什么？</p>
+</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="企业级部署与维护"><a class="header" href="#企业级部署与维护">企业级部署与维护</a></h1>
+<h2 id="部署选项对比"><a class="header" href="#部署选项对比">部署选项对比</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>方式</th><th>适用场景</th><th>复杂度</th><th>生产就绪</th></tr>
+</thead>
+<tbody>
+<tr><td>Local <code>make dev</code></td><td>开发调试</td><td>低</td><td>❌</td></tr>
+<tr><td>Docker Dev</td><td>开发测试</td><td>中</td><td>❌</td></tr>
+<tr><td>Docker Prod</td><td>小规模生产</td><td>中</td><td>✅</td></tr>
+<tr><td>K8s + Provisioner</td><td>企业大规模</td><td>高</td><td>✅</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="docker-生产部署"><a class="header" href="#docker-生产部署">Docker 生产部署</a></h2>
+<h3 id="架构"><a class="header" href="#架构">架构</a></h3>
+<pre><code>Nginx (:2026)
+    │
+    ├── Gateway (:8001) ← 核心服务，内嵌 Agent 运行时
+    │       ├── 持久卷：config.yaml + 数据目录
+    │       └── 环境变量：API Keys
+    │
+    ├── Provisioner (:8002) ← 可选，K8s 模式
+    │
+    └── Frontend (:3000) ← 预构建静态资源
+</code></pre>
+<h3 id="部署命令"><a class="header" href="#部署命令">部署命令</a></h3>
+<pre><code class="language-bash"># 一键构建 + 启动
+make up
+
+# 或分步执行
+./scripts/deploy.sh build              # 构建镜像
+./scripts/deploy.sh start              # 启动服务
+./scripts/deploy.sh down               # 停止
+
+# 本地生产模式（非 Docker）
+make start        # 启动
+make start-daemon # 后台运行
+make stop         # 停止
+</code></pre>
+<h3 id="资源推荐"><a class="header" href="#资源推荐">资源推荐</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>规模</th><th>CPU</th><th>内存</th><th>磁盘</th></tr>
+</thead>
+<tbody>
+<tr><td>小型（个人/小团队）</td><td>4 vCPU</td><td>8 GB</td><td>20 GB</td></tr>
+<tr><td>中型（多用户）</td><td>8 vCPU</td><td>16 GB</td><td>40 GB</td></tr>
+<tr><td>大型（企业）</td><td>16 vCPU</td><td>32 GB</td><td>100 GB+</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="kubernetes-部署"><a class="header" href="#kubernetes-部署">Kubernetes 部署</a></h2>
+<h3 id="架构含-provisioner"><a class="header" href="#架构含-provisioner">架构（含 Provisioner）</a></h3>
+<pre><code>K8s 集群
+    │
+    ├── Gateway Pod
+    │   ├── 容器：Gateway API + Agent Runtime
+    │   ├── ConfigMap：config.yaml
+    │   └── Secret：API Keys
+    │
+    ├── Frontend Pod
+    │   └── 容器：Nginx + Next.js 静态文件
+    │
+    ├── Provisioner Pod
+    │   ├── 管理 Sandbox Pod 生命周期
+    │   └── 与 Gateway 通信
+    │
+    └── Sandbox Pod（每个线程一个）
+        ├── 隔离的容器环境
+        ├── 临时文件系统
+        └── 执行完毕后自动销毁
+</code></pre>
+<h3 id="provisioner-模式配置"><a class="header" href="#provisioner-模式配置">Provisioner 模式配置</a></h3>
+<pre><code class="language-yaml"># config.yaml
+sandbox:
+  use: deerflow.community.aio_sandbox:AioSandboxProvider
+  provisioner_url: http://provisioner:8002
+  kubeconfig_path: /etc/kubernetes/kubeconfig  # K8s 配置
+</code></pre>
+<h2 id="安全加固"><a class="header" href="#安全加固">安全加固</a></h2>
+<h3 id="网络安全"><a class="header" href="#网络安全">网络安全</a></h3>
+<pre><code class="language-yaml"># 1. IP 白名单（iptables 示例）
+iptables -A INPUT -p tcp --dport 2026 -s 10.0.0.0/8 -j ACCEPT
+iptables -A INPUT -p tcp --dport 2026 -j DROP
+
+# 2. 绑定本地回环
+gateway:
+  host: 127.0.0.1  # 仅本地可访问
+  port: 8001
+</code></pre>
+<h3 id="认证层"><a class="header" href="#认证层">认证层</a></h3>
+<ul>
+<li>Gateway 内置 <code>AuthMiddleware</code> + <code>CSRFMiddleware</code></li>
+<li>推荐前置反向代理做额外认证（OAuth2 Proxy、Keycloak）</li>
+<li>敏感操作配置授权检查</li>
+</ul>
+<h3 id="安全配置清单"><a class="header" href="#安全配置清单">安全配置清单</a></h3>
+<pre><code>□ 不在公网暴露 Gateway 端口（8001）
+□ 只暴露 Nginx 端口（2026）
+□ 配置 IP 白名单
+□ API Keys 存放在环境变量或 Secret 中
+□ 启用认证（AuthMiddleware）
+□ 关闭不必要的沙箱 bash
+□ 配置沙箱超时限制
+□ 定期更新依赖
+</code></pre>
+<h2 id="监控与可观测性"><a class="header" href="#监控与可观测性">监控与可观测性</a></h2>
+<h3 id="langsmith-追踪"><a class="header" href="#langsmith-追踪">LangSmith 追踪</a></h3>
+<pre><code class="language-bash"># .env 配置
+LANGSMITH_TRACING=true
+LANGSMITH_API_KEY=lsv2_pt_xxxxxxxx
+LANGSMITH_PROJECT=deerflow-prod
+</code></pre>
+<h3 id="langfuse-追踪"><a class="header" href="#langfuse-追踪">Langfuse 追踪</a></h3>
+<pre><code class="language-bash">LANGFUSE_TRACING=true
+LANGFUSE_PUBLIC_KEY=pk-lf-xxxxxxxx
+LANGFUSE_SECRET_KEY=sk-lf-xxxxxxxx
+LANGFUSE_BASE_URL=https://cloud.langfuse.com
+</code></pre>
+<p>追踪关联字段：</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>字段</th><th>说明</th></tr>
+</thead>
+<tbody>
+<tr><td>session_id</td><td>= thread_id（同一对话的所有轨迹）</td></tr>
+<tr><td>user_id</td><td>有效用户 ID</td></tr>
+<tr><td>trace_name</td><td>assistant_id（默认 lead-agent）</td></tr>
+<tr><td>tags</td><td><code>[env:prod, model:gpt-4o]</code></td></tr>
+</tbody>
+</table>
+</div>
+<h3 id="健康检查-1"><a class="header" href="#健康检查-1">健康检查</a></h3>
+<pre><code class="language-bash"># 基础健康
+curl http://localhost:2026/health
+
+# 配置检查（推荐在 CI/CD 中运行）
+make doctor
+</code></pre>
+<h2 id="日志管理"><a class="header" href="#日志管理">日志管理</a></h2>
+<pre><code class="language-yaml"># config.yaml
+logging:
+  level: INFO  # DEBUG / INFO / WARNING / ERROR
+  format: json # 结构化日志，便于采集
+</code></pre>
+<p><strong>日志最佳实践</strong>：</p>
+<ul>
+<li>生产环境用 <code>INFO</code>，调试用 <code>DEBUG</code></li>
+<li>使用结构化日志（JSON），便于 ELK/Loki 采集</li>
+<li>关键事件（启动/关闭/错误）输出到单独日志流</li>
+</ul>
+<h2 id="备份与恢复"><a class="header" href="#备份与恢复">备份与恢复</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>数据</th><th>位置</th><th>备份策略</th></tr>
+</thead>
+<tbody>
+<tr><td>config.yaml</td><td>项目根目录</td><td>Git 管理 + 定期备份</td></tr>
+<tr><td>.env</td><td>项目根目录</td><td>Secret 管理</td></tr>
+<tr><td>记忆数据</td><td><code>.deer-flow/</code></td><td>定期快照</td></tr>
+<tr><td>上传文件</td><td><code>.deer-flow/uploads/</code></td><td>对象存储（S3/MinIO）</td></tr>
+<tr><td>线程数据</td><td><code>.deer-flow/threads/</code></td><td>按需保留或清理</td></tr>
+<tr><td>Docker 数据卷</td><td>docker volumes</td><td>卷备份</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="升级策略"><a class="header" href="#升级策略">升级策略</a></h2>
+<pre><code class="language-bash"># 1. 拉取最新代码
+git pull origin main
+
+# 2. 配置升级（保留现有配置）
+make config-upgrade
+
+# 3. 检查兼容
+make doctor
+
+# 4. 重启服务
+make stop &amp;&amp; make start
+
+# 或 Docker
+make down &amp;&amp; make up
+</code></pre>
+<p><strong>注意</strong>：</p>
+<ul>
+<li><code>make config</code> 如果 <code>config.yaml</code> 已存在会失败——始终用 <code>make config-upgrade</code></li>
+<li>基础设施配置变更（DB、沙箱、渠道）需要重启</li>
+<li>模型/工具/技能配置变更默认热重载</li>
+</ul>
+<h2 id="常见运维场景"><a class="header" href="#常见运维场景">常见运维场景</a></h2>
+<h3 id="扩容"><a class="header" href="#扩容">扩容</a></h3>
+<pre><code class="language-bash"># Docker Compose
+docker-compose up -d --scale gateway=3
+
+# K8s
+kubectl scale deployment gateway --replicas=5
+</code></pre>
+<h3 id="日志排查"><a class="header" href="#日志排查">日志排查</a></h3>
+<pre><code class="language-bash"># 查看 Gateway 日志
+docker-compose logs -f gateway
+
+# 查看 Nginx 日志
+docker-compose logs -f nginx
+
+# 查看 Provisioner 日志
+docker-compose logs -f provisioner
+</code></pre>
+<h3 id="数据清理"><a class="header" href="#数据清理">数据清理</a></h3>
+<pre><code class="language-bash"># 清理所有线程数据（谨慎！）
+rm -rf .deer-flow/threads/
+
+# 清理记忆
+curl -X DELETE http://localhost:2026/api/memory
+
+# Docker 卷清理
+docker volume prune
+</code></pre>
+<hr>
+<h2 id="复习习题-17"><a class="header" href="#复习习题-17">复习习题</a></h2>
+<ol>
+<li>
+<p>（初级）DeerFlow 支持哪四种部署模式？从开发到生产，推荐怎样的演进路径？</p>
+</li>
+<li>
+<p>（中级）Kubernetes 部署中 Provisioner 的作用是什么？Sandbox Pod 的生命周期是如何管理的？</p>
+</li>
+<li>
+<p>（中级）参考材料中 RBAC 定义了哪几种角色？不同角色各自拥有哪些权限（如 Agent 操作、数据操作、审批操作）？</p>
+</li>
+<li>
+<p>（高级）参考材料中提到“审计日志的签名机制“——每条审计记录都包含 HMAC-SHA256 签名。为什么审计日志需要防篡改？如果日志被篡改而系统没有检测到，会有什么法律和合规风险？</p>
+</li>
+<li>
+<p>（高级）企业级多租户架构中，数据隔离策略涉及数据库表名、文件路径、向量命名空间三个层次。请分析这三种隔离方式的优缺点，并说明在什么场景下应该选择哪种方式。</p>
+</li>
+</ol>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-09f2665d.js"></script>
+
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-c22b7243.js"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+
+    </div>
+    </body>
+</html>

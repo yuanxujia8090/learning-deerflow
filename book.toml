@@ -1,0 +1,12 @@
+[book]
+title = "DeerFlow 学习指南"
+authors = ["DeerFlow Community"]
+language = "zh-CN"
+description = "从零掌握 DeerFlow 超级代理框架——面向前端开发者的系统化学习文档"
+
+[output.html]
+default-theme = "ayu"
+preferred-dark-theme = "navy"
+no-section-label = true
+git-repository-url = "https://github.com/bytedance/deer-flow"
+edit-url-template = "https://github.com/bytedance/deer-flow/edit/main/docs/learn/{path}"
