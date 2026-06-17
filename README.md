@@ -22,34 +22,54 @@ mdbook serve --port 8080
 
 > 需要 Rust 工具链来安装 mdbook。如果没有 `cargo`，请先安装 [rustup](https://rustup.rs/)。
 
-## 文档结构概览
+## 文章目录
 
-```
-deerflow-learn/
-├── book.toml                    # mdbook 配置（主题、仓库链接等）
-└── src/
-    ├── SUMMARY.md               # 目录清单
-    ├── 01-preface.md             # 前言：目标读者与学习路径
-    ├── 02-architecture/          # 架构全景
-    │   ├── 01-system-overview.md
-    │   ├── 02-frontend-analogy.md   # 前端开发者的概念对照
-    │   └── 03-config-system.md
-    ├── 03-core-modules/          # ⚡ 核心模块详解（重点）
-    │   ├── 01-lead-agent.md        # 主导代理
-    │   ├── 02-sub-agents.md        # 子代理系统
-    │   ├── 03-sandbox.md           # 沙箱与文件系统
-    │   ├── 04-skills.md            # 技能系统
-    │   ├── 05-mcp.md               # MCP 集成
-    │   ├── 06-memory.md            # 长时记忆系统
-    │   ├── 07-context-engineering.md
-    │   ├── 08-gateway-api.md       # Gateway API
-    │   ├── 09-im-channels.md       # IM 渠道集成
-    │   └── 10-frontend.md          # 前端架构
-    ├── 04-data-flow.md          # 数据与请求流程
-    ├── 05-capability-boundaries.md # 能力边界与扩展点
-    ├── 06-dev-guide.md          # 二次开发与封装指南
-    └── 07-enterprise-deployment.md # 企业级部署与维护
-```
+### 一、架构全景
+
+从整体上理解 DeerFlow 的系统分层、设计理念和配置体系。
+
+- [系统架构总览](src/02-architecture/01-system-overview.md)
+- [前端开发者的概念对照](src/02-architecture/02-frontend-analogy.md)
+- [配置体系](src/02-architecture/03-config-system.md)
+
+### 二、核心模块详解
+
+逐一深入 DeerFlow 的 10 个核心模块，理解它们的设计与实现。
+
+- [主导代理（Lead Agent）](src/03-core-modules/01-lead-agent.md)
+- [子代理系统（Sub-Agents）](src/03-core-modules/02-sub-agents.md)
+- [沙箱与文件系统](src/03-core-modules/03-sandbox.md)
+- [技能系统（Skills）](src/03-core-modules/04-skills.md)
+- [MCP 集成](src/03-core-modules/05-mcp.md)
+- [长时记忆系统](src/03-core-modules/06-memory.md)
+- [上下文工程](src/03-core-modules/07-context-engineering.md)
+- [Gateway API](src/03-core-modules/08-gateway-api.md)
+- [IM 渠道集成](src/03-core-modules/09-im-channels.md)
+- [前端架构](src/03-core-modules/10-frontend.md)
+
+### 三、核心流程
+
+从请求发起到响应返回，完整追踪一次用户请求的生命周期。
+
+- [数据与请求流程](src/04-data-flow.md)
+
+### 四、能力边界
+
+梳理 DeerFlow 能做什么、不能做什么，以及如何通过扩展点增强能力。
+
+- [能力边界与扩展点](src/05-capability-boundaries.md)
+
+### 五、二次开发
+
+面向开发者的指南：如何进行二次封装、新增 Skill、定制前端等。
+
+- [二次开发与封装指南](src/06-dev-guide.md)
+
+### 六、企业级部署
+
+生产环境下的部署方案、运维策略与最佳实践。
+
+- [企业级部署与维护](src/07-enterprise-deployment.md)
 
 ## 阅读建议
 
